@@ -30,8 +30,8 @@ class SocketService {
     socket.disconnect();
   }
 
-  void sendMessage(dynamic message) {
-    socket.emit('message', message);
+  void sendMessage(String decr, dynamic message) {
+    socket.emit(decr, message);
   }
 
   void listenForMessages(Function(dynamic) callback) {
