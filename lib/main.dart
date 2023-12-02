@@ -48,8 +48,8 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
-  void sendMessage(dynamic message) {
-    socketService.sendMessage(message);
+  void sendMessage(dynamic message, String decr) {
+    socketService.sendMessage(message, decr);
   }
 
   @override
