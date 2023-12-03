@@ -18,7 +18,7 @@ class CategoriesWidget extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
-                    color: Colors.blue[900]),
+                    color: Colors.black),
               ),
               Text(
                 'See All',
