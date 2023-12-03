@@ -56,7 +56,9 @@ class ItemWidget extends StatelessWidget {
                 child: Column(
                   children: [
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, 'itempscreen');
+                      },
                       child: Container(
                         margin: EdgeInsets.all(10),
                         child: Image.asset(

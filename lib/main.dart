@@ -1,4 +1,6 @@
+import 'package:bring/screen/Itemscreen.dart';
 import 'package:bring/screen/splashscreen.dart';
+import 'package:bring/widget/ItemWidget.dart';
 import 'package:flutter/material.dart';
 import 'server/socketserver.dart';
 import 'screen/homescreen.dart';
@@ -16,10 +18,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const MyHomePage(),
+      home: MyHomePage(),
       routes: {
-        'homescreen': (context) => homescreen(),
-        'messagescreen': (context) => messagescreen(),
+        '/splashscreen': (context) => SplashScreen(),
+        //'Login': (context) => messagescreen(),
+        'itempscreen': (context) => ItemPage(),
       },
     );
   }
