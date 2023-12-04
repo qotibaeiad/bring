@@ -13,9 +13,21 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomBarWithSheet(
+        autoClose: true,
         sheetChild: BottomCartSheet(),
-        bottomBarTheme: const BottomBarTheme(
-          decoration: BoxDecoration(color: Colors.white),
+        bottomBarTheme: BottomBarTheme(
+          decoration: BoxDecoration(
+            color: Colors
+                .white, // Set this to transparent to see the circular background
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20.0), // Adjust the radius as needed
+              topRight: Radius.circular(20.0), // Adjust the radius as needed
+            ),
+            border: Border.all(
+              color: Colors.grey, // Set the color of the border
+              width: 1.0, // Set the width of the border
+            ),
+          ),
           itemIconColor: Colors.grey,
         ),
         items: const [
