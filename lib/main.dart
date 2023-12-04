@@ -6,7 +6,7 @@ import 'server/socketserver.dart';
 late SocketService socketService;
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

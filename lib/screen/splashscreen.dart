@@ -1,3 +1,5 @@
+import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
+import 'package:bring/widget/BottomCartSheet.dart';
 import 'package:bring/widget/CategoriesWidget.dart';
 import 'package:bring/widget/ItemWidget.dart';
 import 'package:bring/widget/Popular_Widget.dart';
@@ -10,6 +12,17 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomBarWithSheet(
+        sheetChild: BottomCartSheet(),
+        bottomBarTheme: const BottomBarTheme(
+          decoration: BoxDecoration(color: Colors.white),
+          itemIconColor: Colors.grey,
+        ),
+        items: const [
+          BottomBarWithSheetItem(icon: Icons.people),
+          BottomBarWithSheetItem(icon: Icons.favorite),
+        ],
+      ),
       backgroundColor: Colors.blue[900],
       body: SafeArea(
         child: SingleChildScrollView(
@@ -42,7 +55,9 @@ class SplashScreen extends StatelessWidget {
                           fontStyle: FontStyle.italic,
                         ),
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            /////////
+                          },
                           child: Icon(
                             CupertinoIcons.cart,
                             size: 30,
