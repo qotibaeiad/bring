@@ -25,14 +25,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
-  bottom_bar_with_sheet:
-    dependency: "direct main"
-    description:
-      name: bottom_bar_with_sheet
-      sha256: c9a43e90cb6886d1e012be661693a8b847d1b1879c81176b74d72a29eb4bf644
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.4.0"
   characters:
     dependency: transitive
     description:
@@ -147,6 +139,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.3"
+  side_sheet:
+    dependency: "direct main"
+    description:
+      name: side_sheet
+      sha256: "3c46b88c01a741126129b9f6c9f5a7e0b97728ab78617ff4997a61f6a7629e25"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.4"
+  side_sheet_material3:
+    dependency: "direct main"
+    description:
+      name: side_sheet_material3
+      sha256: acd875d951c467b9dc1d3b670470ed4f238d3cff28923a2f0c012431280f42ca
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -234,4 +242,4 @@ packages:
     version: "0.1.4-beta"
 sdks:
   dart: ">=3.1.4 <4.0.0"
-  flutter: ">=0.2.5"
+  flutter: ">=1.17.0"
