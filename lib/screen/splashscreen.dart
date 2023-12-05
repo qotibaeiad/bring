@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:bring/class/Item.dart';
+import 'package:bring/main.dart';
 import 'package:bring/widget/BottomCartSheet.dart';
 import 'package:bring/widget/CategoriesWidget.dart';
 import 'package:bring/widget/ItemWidget.dart';
@@ -102,6 +104,9 @@ class _SplashScreenState extends State<SplashScreen> {
               child: InkWell(
                 onTap: () {
                   /////////
+                  //final Item item = Item();
+                  //item.setItemData('name', 'sd', 'sd', 'sa', 'sd', 'sd');
+                  //socketService.sendMessage('addItem', item);
                   SideSheet.right(
                       body: Scaffold(
                           appBar: AppBar(
