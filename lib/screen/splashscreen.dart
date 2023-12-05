@@ -22,7 +22,11 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
-          margin: EdgeInsets.only(top: 45, left: 70, right: 70, bottom: 5),
+          margin: EdgeInsets.only(
+              top: MediaQuery.of(context).size.width * 0.12,
+              left: MediaQuery.of(context).size.width * 0.15,
+              right: MediaQuery.of(context).size.width * 0.15,
+              bottom: 5),
           //padding: EdgeInsets.a,
           height: 50,
           decoration: BoxDecoration(
@@ -33,11 +37,12 @@ class _SplashScreenState extends State<SplashScreen> {
             children: [
               Icon(
                 Icons.search,
-                size: 25,
+                size: MediaQuery.of(context).size.width * 0.050,
               ),
               Container(
-                margin: EdgeInsets.only(left: 20),
-                width: 200,
+                margin: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.050),
+                width: MediaQuery.of(context).size.width * 0.44,
                 child: TextFormField(
                   decoration: InputDecoration(hintText: 'Search here...'),
                 ),
@@ -45,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
               Spacer(),
               Icon(
                 Icons.filter_list,
-                size: 25,
+                size: MediaQuery.of(context).size.width * 0.050,
               ),
             ],
           ),
@@ -54,7 +59,11 @@ class _SplashScreenState extends State<SplashScreen> {
         leadingWidth: 100,
         backgroundColor: Colors.blue[900],
         leading: Container(
-          padding: EdgeInsets.only(right: 20, left: 15, top: 10),
+          padding: EdgeInsets.only(
+              right: MediaQuery.of(context).size.width * 0.050,
+              left: MediaQuery.of(context).size.width * 0.050,
+              top: MediaQuery.of(context).size.width * 0.030,
+              bottom: MediaQuery.of(context).size.width * 0.10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -79,7 +88,11 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
         actions: [
           Container(
-            padding: EdgeInsets.only(right: 20, left: 15, top: 10),
+            padding: EdgeInsets.only(
+                right: MediaQuery.of(context).size.width * 0.050,
+                left: MediaQuery.of(context).size.width * 0.050,
+                top: MediaQuery.of(context).size.width * 0.030,
+                bottom: MediaQuery.of(context).size.width * 0.10),
             child: Badge.count(
               count: 4,
               textStyle: TextStyle(
