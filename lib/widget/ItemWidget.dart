@@ -76,18 +76,14 @@ class ItemWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).size.height * 0.008),
-                      child: Container(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          'Item title',
-                          style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * 0.06,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black87,
-                          ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Item title',
+                        style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.width * 0.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
                         ),
                       ),
                     ),
@@ -108,7 +104,7 @@ class ItemWidget extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
-                        vertical: MediaQuery.of(context).size.height * 0.013,
+                        vertical: MediaQuery.of(context).size.height * 0.001,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

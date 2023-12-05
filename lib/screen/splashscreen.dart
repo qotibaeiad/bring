@@ -7,7 +7,6 @@ import 'package:bring/widget/Popular_Widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:side_sheet/side_sheet.dart';
-import 'package:side_sheet_material3/side_sheet_material3.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -21,38 +20,40 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace: Container(
-          margin: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height * 0.044,
-              left: MediaQuery.of(context).size.width * 0.15,
-              right: MediaQuery.of(context).size.width * 0.15,
-              bottom: MediaQuery.of(context).size.height * 0.01),
-          //padding: EdgeInsets.a,
-          height: MediaQuery.of(context).size.height * 0.05,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Row(
-            children: [
-              Icon(
-                Icons.search,
-                size: 25,
-              ),
-              Container(
-                margin: EdgeInsets.only(
-                    left: MediaQuery.of(context).size.width * 0.044),
-                width: MediaQuery.of(context).size.width * 0.5,
-                child: TextFormField(
-                  decoration: InputDecoration(hintText: 'Search here...'),
+        flexibleSpace: SafeArea(
+          child: Container(
+            margin: EdgeInsets.only(
+                top: MediaQuery.of(context).size.height * 0.010,
+                left: MediaQuery.of(context).size.width * 0.15,
+                right: MediaQuery.of(context).size.width * 0.15,
+                bottom: MediaQuery.of(context).size.height * 0.001),
+            //padding: EdgeInsets.a,
+            height: MediaQuery.of(context).size.height * 0.05,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.search,
+                  size: 25,
                 ),
-              ),
-              Spacer(),
-              Icon(
-                Icons.filter_list,
-                size: MediaQuery.of(context).size.width * 0.06,
-              ),
-            ],
+                Container(
+                  margin: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * 0.044),
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  child: TextFormField(
+                    decoration: InputDecoration(hintText: 'Search here...'),
+                  ),
+                ),
+                Spacer(),
+                Icon(
+                  Icons.filter_list,
+                  size: MediaQuery.of(context).size.width * 0.06,
+                ),
+              ],
+            ),
           ),
         ),
         toolbarHeight: MediaQuery.of(context).size.height * 0.07,
