@@ -104,9 +104,9 @@ class _SplashScreenState extends State<SplashScreen> {
               child: InkWell(
                 onTap: () {
                   /////////
-                  //final Item item = Item();
-                  //item.setItemData('name', 'sd', 'sd', 'sa', 'sd', 'sd');
-                  //socketService.sendMessage('addItem', item);
+                  final Item item = Item();
+                  item.setItemData('name', 'sd', 'sd', 'sa', 'sd', 'sd');
+                  socketService.sendMessage('addItem', item);
                   SideSheet.right(
                       body: Scaffold(
                           appBar: AppBar(
