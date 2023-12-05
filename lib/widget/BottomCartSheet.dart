@@ -12,7 +12,7 @@ class BottomCartSheet extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                for (int i = 0; i < 8; i++)
+                for (int i = 0; i < 15; i++)
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                     decoration: BoxDecoration(
@@ -29,11 +29,11 @@ class BottomCartSheet extends StatelessWidget {
                     child: Row(
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(5),
                           child: Image.asset(
                             'images/7.png',
-                            height: 80,
-                            width: 80,
+                            height: MediaQuery.of(context).size.width * 0.14,
+                            width: MediaQuery.of(context).size.width * 0.14,
                           ),
                         ),
                         Column(
@@ -45,7 +45,8 @@ class BottomCartSheet extends StatelessWidget {
                                 'Item Title',
                                 style: TextStyle(
                                   color: Colors.blue[900],
-                                  fontSize: 22,
+                                  fontSize:
+                                      MediaQuery.of(context).size.width * 0.044,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -56,7 +57,8 @@ class BottomCartSheet extends StatelessWidget {
                                 '\$20',
                                 style: TextStyle(
                                   color: Colors.blue[900],
-                                  fontSize: 22,
+                                  fontSize:
+                                      MediaQuery.of(context).size.width * 0.044,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -72,7 +74,7 @@ class BottomCartSheet extends StatelessWidget {
                               Icon(
                                 Icons.disabled_by_default,
                                 color: Colors.blue[900],
-                                size: 30,
+                                size: MediaQuery.of(context).size.width * 0.044,
                               ),
                               SizedBox(
                                 height: 25,
@@ -82,7 +84,7 @@ class BottomCartSheet extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    padding: EdgeInsets.all(5),
+                                    padding: EdgeInsets.all(1),
                                     decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(20),
@@ -96,6 +98,8 @@ class BottomCartSheet extends StatelessWidget {
                                     ),
                                     child: Icon(
                                       CupertinoIcons.minus,
+                                      size: MediaQuery.of(context).size.width *
+                                          0.044,
                                     ),
                                   ),
                                   Container(
@@ -104,13 +108,15 @@ class BottomCartSheet extends StatelessWidget {
                                     child: Text(
                                       '02',
                                       style: TextStyle(
-                                        fontSize: 18,
+                                        fontSize:
+                                            MediaQuery.of(context).size.width *
+                                                0.044,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    padding: EdgeInsets.all(5),
+                                    padding: EdgeInsets.all(1),
                                     decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(20),
@@ -124,6 +130,8 @@ class BottomCartSheet extends StatelessWidget {
                                     ),
                                     child: Icon(
                                       CupertinoIcons.plus,
+                                      size: MediaQuery.of(context).size.width *
+                                          0.044,
                                     ),
                                   ),
                                 ],
