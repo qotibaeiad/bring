@@ -23,12 +23,12 @@ class _SplashScreenState extends State<SplashScreen> {
       appBar: AppBar(
         flexibleSpace: Container(
           margin: EdgeInsets.only(
-              top: MediaQuery.of(context).size.width * 0.12,
+              top: MediaQuery.of(context).size.height * 0.044,
               left: MediaQuery.of(context).size.width * 0.15,
               right: MediaQuery.of(context).size.width * 0.15,
-              bottom: 5),
+              bottom: MediaQuery.of(context).size.height * 0.01),
           //padding: EdgeInsets.a,
-          height: 50,
+          height: MediaQuery.of(context).size.height * 0.05,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
@@ -37,12 +37,12 @@ class _SplashScreenState extends State<SplashScreen> {
             children: [
               Icon(
                 Icons.search,
-                size: MediaQuery.of(context).size.width * 0.050,
+                size: 25,
               ),
               Container(
                 margin: EdgeInsets.only(
-                    left: MediaQuery.of(context).size.width * 0.050),
-                width: MediaQuery.of(context).size.width * 0.44,
+                    left: MediaQuery.of(context).size.width * 0.044),
+                width: MediaQuery.of(context).size.width * 0.5,
                 child: TextFormField(
                   decoration: InputDecoration(hintText: 'Search here...'),
                 ),
@@ -50,20 +50,21 @@ class _SplashScreenState extends State<SplashScreen> {
               Spacer(),
               Icon(
                 Icons.filter_list,
-                size: MediaQuery.of(context).size.width * 0.050,
+                size: MediaQuery.of(context).size.width * 0.06,
               ),
             ],
           ),
         ),
-        toolbarHeight: 50,
-        leadingWidth: 100,
+        toolbarHeight: MediaQuery.of(context).size.height * 0.07,
+        leadingWidth: MediaQuery.of(context).size.width * 0.29,
         backgroundColor: Colors.blue[900],
         leading: Container(
           padding: EdgeInsets.only(
-              right: MediaQuery.of(context).size.width * 0.050,
-              left: MediaQuery.of(context).size.width * 0.050,
-              top: MediaQuery.of(context).size.width * 0.030,
-              bottom: MediaQuery.of(context).size.width * 0.10),
+            left: MediaQuery.of(context).size.width * 0.040,
+          ),
+          //left: MediaQuery.of(context).size.width * 0.050,
+          //top: MediaQuery.of(context).size.height * 0.030,
+          //bottom: MediaQuery.of(context).size.height * 0.10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -80,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Icon(
                   Icons.menu,
                   color: Colors.white,
-                  size: 30,
+                  size: MediaQuery.of(context).size.height * 0.04,
                 ),
               ),
             ],
@@ -89,10 +90,9 @@ class _SplashScreenState extends State<SplashScreen> {
         actions: [
           Container(
             padding: EdgeInsets.only(
-                right: MediaQuery.of(context).size.width * 0.050,
-                left: MediaQuery.of(context).size.width * 0.050,
-                top: MediaQuery.of(context).size.width * 0.030,
-                bottom: MediaQuery.of(context).size.width * 0.10),
+              right: MediaQuery.of(context).size.width * 0.040,
+              top: MediaQuery.of(context).size.height * 0.017,
+            ),
             child: Badge.count(
               count: 4,
               textStyle: TextStyle(
@@ -113,7 +113,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 },
                 child: Icon(
                   CupertinoIcons.cart,
-                  size: 30,
+                  size: MediaQuery.of(context).size.height * 0.04,
                   color: Colors.white,
                 ),
               ),
@@ -175,31 +175,5 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       ),
     );
-
-    /*
-      bottomNavigationBar: BottomBarWithSheet(
-        autoClose: true,
-        sheetChild: BottomCartSheet(),
-        bottomBarTheme: BottomBarTheme(
-          decoration: BoxDecoration(
-            color: Colors
-                .white, // Set this to transparent to see the circular background
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20.0), // Adjust the radius as needed
-              topRight: Radius.circular(20.0), // Adjust the radius as needed
-            ),
-            border: Border.all(
-              color: Colors.grey, // Set the color of the border
-              width: 1.0, // Set the width of the border
-            ),
-          ),
-          itemIconColor: Colors.grey,
-        ),
-        items: const [
-          BottomBarWithSheetItem(icon: Icons.people),
-          BottomBarWithSheetItem(icon: Icons.favorite),
-        ],
-      ),
-      */
   }
 }

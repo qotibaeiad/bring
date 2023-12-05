@@ -8,7 +8,11 @@ class ItemWidget extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.only(left: 10, right: 5, bottom: 5, top: 20),
+          padding: EdgeInsets.only(
+              left: MediaQuery.of(context).size.width * 0.046,
+              right: MediaQuery.of(context).size.width * 0.040,
+              bottom: MediaQuery.of(context).size.height * 0.01,
+              top: MediaQuery.of(context).size.height * 0.01),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -22,7 +26,7 @@ class ItemWidget extends StatelessWidget {
               Text(
                 'See All',
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: MediaQuery.of(context).size.width * 0.045,
                   fontWeight: FontWeight.bold,
                   color: Colors.black54,
                 ),
@@ -31,9 +35,11 @@ class ItemWidget extends StatelessWidget {
           ),
         ),
         GridView.count(
-          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
+          padding: EdgeInsets.symmetric(
+              vertical: MediaQuery.of(context).size.height * 0.040,
+              horizontal: MediaQuery.of(context).size.width * 0.040),
+          crossAxisSpacing: MediaQuery.of(context).size.width * 0.040,
+          mainAxisSpacing: MediaQuery.of(context).size.width * 0.040,
           physics: NeverScrollableScrollPhysics(),
           crossAxisCount: 2,
           childAspectRatio: 0.8,
@@ -41,7 +47,8 @@ class ItemWidget extends StatelessWidget {
           children: [
             for (int i = 0; i < 8; i++)
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width * 0.030),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -60,22 +67,24 @@ class ItemWidget extends StatelessWidget {
                         Navigator.pushNamed(context, 'itempscreen');
                       },
                       child: Container(
-                        margin: EdgeInsets.all(10),
+                        margin: EdgeInsets.all(
+                            MediaQuery.of(context).size.width * 0.0001),
                         child: Image.asset(
                           'images/3.png',
-                          height: 110,
-                          width: 110,
+                          height: MediaQuery.of(context).size.height * 0.15,
+                          width: MediaQuery.of(context).size.width * 0.30,
                         ),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(bottom: 8),
+                      padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).size.height * 0.008),
                       child: Container(
                         alignment: Alignment.centerLeft,
                         child: Text(
                           'Item title',
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: MediaQuery.of(context).size.width * 0.06,
                             fontWeight: FontWeight.bold,
                             color: Colors.black87,
                           ),
@@ -83,13 +92,14 @@ class ItemWidget extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(bottom: 8),
+                      padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).size.height * 0.01),
                       child: Container(
                         alignment: Alignment.centerLeft,
                         child: Text(
                           'Sweet Pizza',
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: MediaQuery.of(context).size.width * 0.04,
                             fontWeight: FontWeight.bold,
                             color: Colors.black54,
                           ),
@@ -97,14 +107,17 @@ class ItemWidget extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 5),
+                      padding: EdgeInsets.symmetric(
+                        vertical: MediaQuery.of(context).size.height * 0.013,
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             "\$10",
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 0.033,
                               fontWeight: FontWeight.bold,
                               color: Colors.blue[900],
                             ),
@@ -112,7 +125,8 @@ class ItemWidget extends StatelessWidget {
                           InkWell(
                             onTap: () {},
                             child: Container(
-                              padding: EdgeInsets.all(8),
+                              padding: EdgeInsets.all(
+                                  MediaQuery.of(context).size.height * 0.013),
                               decoration: BoxDecoration(
                                 color: Colors.blue[900],
                                 borderRadius: BorderRadius.circular(10),
@@ -120,7 +134,7 @@ class ItemWidget extends StatelessWidget {
                               child: Icon(
                                 Icons.add_shopping_cart,
                                 color: Colors.white,
-                                size: 10,
+                                size: MediaQuery.of(context).size.height * 0.02,
                               ),
                             ),
                           ),
