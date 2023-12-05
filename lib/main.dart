@@ -1,13 +1,12 @@
+import 'package:bring/screen/Itemscreen.dart';
 import 'package:bring/screen/splashscreen.dart';
 import 'package:flutter/material.dart';
 import 'server/socketserver.dart';
-import 'screen/homescreen.dart';
-import 'screen/messagescreen.dart';
 
 late SocketService socketService;
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -16,10 +15,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const MyHomePage(),
+      debugShowCheckedModeBanner: false,
+      home: MyHomePage(),
       routes: {
-        'homescreen': (context) => homescreen(),
-        'messagescreen': (context) => messagescreen(),
+        '/splashscreen': (context) => SplashScreen(),
+        //'Login': (context) => messagescreen(),
+        'itempscreen': (context) => ItemPage(),
       },
     );
   }
