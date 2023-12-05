@@ -67,8 +67,8 @@ class ItemWidget extends StatelessWidget {
                         Navigator.pushNamed(context, 'itempscreen');
                       },
                       child: Container(
-                        margin: EdgeInsets.all(
-                            MediaQuery.of(context).size.width * 0.0001),
+                        // margin: EdgeInsets.only(
+                        //   bottom: MediaQuery.of(context).size.width * 0.0001),
                         child: Image.asset(
                           'images/3.png',
                           height: MediaQuery.of(context).size.height * 0.15,
@@ -76,20 +76,24 @@ class ItemWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Item title',
-                        style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width * 0.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black87,
+                    Padding(
+                      padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).size.height * 0.012),
+                      child: Container(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Item title',
+                          style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width * 0.035,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
+                          ),
                         ),
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).size.height * 0.01),
+                          bottom: MediaQuery.of(context).size.height * 0.0001),
                       child: Container(
                         alignment: Alignment.centerLeft,
                         child: Text(
@@ -103,8 +107,8 @@ class ItemWidget extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: MediaQuery.of(context).size.height * 0.001,
+                      padding: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height * 0.009,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -130,7 +134,7 @@ class ItemWidget extends StatelessWidget {
                               child: Icon(
                                 Icons.add_shopping_cart,
                                 color: Colors.white,
-                                size: MediaQuery.of(context).size.height * 0.02,
+                                size: MediaQuery.of(context).size.height * 0.01,
                               ),
                             ),
                           ),

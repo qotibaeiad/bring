@@ -109,8 +109,6 @@ class _SplashScreenState extends State<SplashScreen> {
                           ),
                           body: BottomCartSheet()),
                       context: context);
-                  //  child:
-                  //   Text('OPEN LEFT SIDE SHEET');
                 },
                 child: Icon(
                   CupertinoIcons.cart,
