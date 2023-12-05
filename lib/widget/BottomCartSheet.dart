@@ -168,7 +168,7 @@ class BottomCartSheet extends StatelessWidget {
                   Text(
                     'Delivery',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: MediaQuery.of(context).size.width * 0.044,
                       fontWeight: FontWeight.bold,
                       color: Colors.blue[900],
                     ),
