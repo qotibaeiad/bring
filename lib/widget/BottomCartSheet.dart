@@ -14,14 +14,16 @@ class BottomCartSheet extends StatelessWidget {
               children: [
                 for (int i = 0; i < 15; i++)
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    margin: EdgeInsets.symmetric(
+                        vertical: MediaQuery.of(context).size.height * 0.011,
+                        horizontal: MediaQuery.of(context).size.width * 0.050),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 1,
+                          spreadRadius: 4,
                           blurRadius: 8,
                         ),
                       ],
@@ -29,7 +31,8 @@ class BottomCartSheet extends StatelessWidget {
                     child: Row(
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(5),
+                          padding: EdgeInsets.all(
+                              MediaQuery.of(context).size.width * 0.004),
                           child: Image.asset(
                             'images/7.png',
                             height: MediaQuery.of(context).size.width * 0.14,
@@ -40,7 +43,9 @@ class BottomCartSheet extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              margin: EdgeInsets.only(bottom: 13),
+                              margin: EdgeInsets.only(
+                                  bottom: MediaQuery.of(context).size.height *
+                                      0.019),
                               child: Text(
                                 'Item Title',
                                 style: TextStyle(
@@ -67,7 +72,11 @@ class BottomCartSheet extends StatelessWidget {
                         ),
                         Spacer(),
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          padding: EdgeInsets.symmetric(
+                              horizontal:
+                                  MediaQuery.of(context).size.width * 0.007,
+                              vertical:
+                                  MediaQuery.of(context).size.height * 0.006),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
@@ -77,14 +86,17 @@ class BottomCartSheet extends StatelessWidget {
                                 size: MediaQuery.of(context).size.width * 0.044,
                               ),
                               SizedBox(
-                                height: 25,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.055,
                               ),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    padding: EdgeInsets.all(1),
+                                    padding: EdgeInsets.all(
+                                        MediaQuery.of(context).size.width *
+                                            0.002),
                                     decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(20),
@@ -103,8 +115,10 @@ class BottomCartSheet extends StatelessWidget {
                                     ),
                                   ),
                                   Container(
-                                    margin:
-                                        EdgeInsets.symmetric(horizontal: 10),
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal:
+                                            MediaQuery.of(context).size.width *
+                                                0.016),
                                     child: Text(
                                       '02',
                                       style: TextStyle(
@@ -148,8 +162,10 @@ class BottomCartSheet extends StatelessWidget {
           ),
         ),
         Container(
-          margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-          padding: EdgeInsets.all(15),
+          margin: EdgeInsets.symmetric(
+              vertical: MediaQuery.of(context).size.height * 0.014,
+              horizontal: MediaQuery.of(context).size.width * 0.025),
+          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),

@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:bring/widget/BottomCartSheet.dart';
 import 'package:bring/widget/CategoriesWidget.dart';
 import 'package:bring/widget/ItemWidget.dart';
@@ -7,7 +5,6 @@ import 'package:bring/widget/Popular_Widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:side_sheet/side_sheet.dart';
-import 'package:side_sheet_material3/side_sheet_material3.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -23,12 +20,12 @@ class _SplashScreenState extends State<SplashScreen> {
       appBar: AppBar(
         flexibleSpace: Container(
           margin: EdgeInsets.only(
-              top: MediaQuery.of(context).size.width * 0.12,
+              top: MediaQuery.of(context).size.height * 0.055,
               left: MediaQuery.of(context).size.width * 0.15,
               right: MediaQuery.of(context).size.width * 0.15,
-              bottom: 5),
+              bottom: MediaQuery.of(context).size.height * 0.004),
           //padding: EdgeInsets.a,
-          height: 50,
+          height: MediaQuery.of(context).size.height * 0.05,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
@@ -55,8 +52,8 @@ class _SplashScreenState extends State<SplashScreen> {
             ],
           ),
         ),
-        toolbarHeight: 50,
-        leadingWidth: 100,
+        toolbarHeight: MediaQuery.of(context).size.height * 0.07,
+        leadingWidth: MediaQuery.of(context).size.width * 0.29,
         backgroundColor: Colors.blue[900],
         leading: Container(
           padding: EdgeInsets.only(
@@ -80,7 +77,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Icon(
                   Icons.menu,
                   color: Colors.white,
-                  size: 30,
+                  size: MediaQuery.of(context).size.width * 0.073,
                 ),
               ),
             ],
@@ -100,7 +97,6 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
               child: InkWell(
                 onTap: () {
-                  /////////
                   SideSheet.right(
                       body: Scaffold(
                           appBar: AppBar(
@@ -108,12 +104,10 @@ class _SplashScreenState extends State<SplashScreen> {
                           ),
                           body: BottomCartSheet()),
                       context: context);
-                  //  child:
-                  //   Text('OPEN LEFT SIDE SHEET');
                 },
                 child: Icon(
                   CupertinoIcons.cart,
-                  size: 30,
+                  size: MediaQuery.of(context).size.width * 0.073,
                   color: Colors.white,
                 ),
               ),
@@ -137,21 +131,20 @@ class _SplashScreenState extends State<SplashScreen> {
                       child: Text(
                         "Welcome",
                         style: TextStyle(
-                            fontSize: 35,
+                            fontSize: MediaQuery.of(context).size.width * 0.08,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
                     Text(
                       'What do you want to Buy?',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: MediaQuery.of(context).size.width * 0.045),
                     ),
                   ],
                 ),
               ),
-              //Search Widget
-
-              // Products Widgets
               Container(
                 padding: EdgeInsets.only(top: 20),
                 decoration: BoxDecoration(
@@ -175,31 +168,5 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       ),
     );
-
-    /*
-      bottomNavigationBar: BottomBarWithSheet(
-        autoClose: true,
-        sheetChild: BottomCartSheet(),
-        bottomBarTheme: BottomBarTheme(
-          decoration: BoxDecoration(
-            color: Colors
-                .white, // Set this to transparent to see the circular background
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20.0), // Adjust the radius as needed
-              topRight: Radius.circular(20.0), // Adjust the radius as needed
-            ),
-            border: Border.all(
-              color: Colors.grey, // Set the color of the border
-              width: 1.0, // Set the width of the border
-            ),
-          ),
-          itemIconColor: Colors.grey,
-        ),
-        items: const [
-          BottomBarWithSheetItem(icon: Icons.people),
-          BottomBarWithSheetItem(icon: Icons.favorite),
-        ],
-      ),
-      */
   }
 }
