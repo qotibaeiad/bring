@@ -1,3 +1,4 @@
+import 'package:bring/screen/splashscreen.dart';
 import 'package:flutter/material.dart';
 import 'server/socketserver.dart';
 import 'screen/homescreen.dart';
@@ -56,11 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text('Chat'),
-        backgroundColor: Color.fromRGBO(254, 114, 36, 1),
-      ),
-      body: homescreen(),
+      body: SplashScreen(),
     );
   }
 }

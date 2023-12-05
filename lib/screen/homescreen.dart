@@ -75,6 +75,7 @@ class _homescreenState extends State<homescreen> {
                           user.setUserData(name, phonenumber);
                           socketService.sendMessage('addUser', user);
                           // socketService.sendMessage("Login");
+
                           Navigator.pushNamed(context, 'messagescreen');
                         },
                         text: 'Login',
