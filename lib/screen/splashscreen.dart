@@ -18,6 +18,17 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    socketService.socket.on('itemAdded', (data) {
+      print("Items add");
+      setState(() {
+        // Your UI update logic here
+      });
+      // Handle the 'itemAdded' event data
+    });
+  }
+
   List<Item> itemList = [];
   @override
   Widget build(BuildContext context) {
@@ -105,6 +116,7 @@ class _SplashScreenState extends State<SplashScreen> {
               child: InkWell(
                 onTap: () {
                   /////////
+
                   final Item item = Item();
                   item.setItemData('name', 'sd', 'sd', 'sa', 'sd', 'sd');
                   socketService.sendMessage('addItem', item);

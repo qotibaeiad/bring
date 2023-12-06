@@ -40,12 +40,14 @@ class SocketService {
       // Handle the 'userAdded' event data
       callback(data);
     });
+/*
+
     socket.on('itemAdded', (data) {
       print("Items add");
       // Handle the 'itemAdded' event data
       callback(data);
     });
-
+*/
     socket.on('allItems', (items) {
       // Handle the received items
       callback(items);
