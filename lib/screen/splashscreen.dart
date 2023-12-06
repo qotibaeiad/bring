@@ -8,6 +8,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:side_sheet/side_sheet.dart';
 
+List<Item> listItem = [];
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -16,8 +18,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  List<Item> listItem = [];
-
   @override
   void initState() {
     super.initState();
@@ -64,7 +64,6 @@ class _SplashScreenState extends State<SplashScreen> {
     });
   }
 
-  List<Item> itemList = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
