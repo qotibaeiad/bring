@@ -18,6 +18,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  List<Item> itemList = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
