@@ -35,7 +35,7 @@ class SocketService {
   }
 
   void listenForMessages(Function(dynamic) callback) {
-    socket.on('message', callback);
+    //socket.on('message', callback);
     socket.on('userAdded', (data) {
       // Handle the 'userAdded' event data
       callback(data);
@@ -48,9 +48,9 @@ class SocketService {
       callback(data);
     });
 */
-    socket.on('allItems', (items) {
-      // Handle the received items
-      callback(items);
-    });
+    //socket.on('allItems', (items) {
+    // Handle the received items
+    //  callback(items);
+    // });
   }
 }

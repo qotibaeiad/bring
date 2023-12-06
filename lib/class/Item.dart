@@ -6,14 +6,8 @@ class Item {
   late String quant;
   late String shop;
 
-  // Private constructor
-  Item._private();
-
-  // Singleton instance
-  static final Item _instance = Item._private();
-
-  // Factory constructor to return the singleton instance
-  factory Item() => _instance;
+  // Public constructor
+  Item();
 
   // Method to set item data
   void setItemData(String url, String desc, String price, String category,

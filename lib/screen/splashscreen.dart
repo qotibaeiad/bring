@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:bring/class/Item.dart';
 import 'package:bring/main.dart';
 import 'package:bring/widget/BottomCartSheet.dart';
@@ -18,14 +16,51 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  List<Item> listItem = [];
+
   @override
   void initState() {
-    socketService.socket.on('itemAdded', (data) {
-      print("Items add");
+    super.initState();
+    socketService.socket.emit("getItems");
+    print("request");
+    socketService.socket.on('allItems', (data) {
+      print("I have all items");
+      //print(data);
       setState(() {
-        // Your UI update logic here
+        // Clear the existing list and add new items
+        listItem.clear();
+        for (var itemData in data) {
+          Item item = Item();
+          item.setItemData(
+            itemData['url'],
+            itemData['desc'],
+            itemData['price'],
+            itemData['category'],
+            itemData['quant'],
+            itemData['shop'],
+          );
+          listItem.add(item);
+        }
+        for (var element in listItem) {
+          print(element.price);
+        }
       });
-      // Handle the 'itemAdded' event data
+    });
+    socketService.socket.on('itemAdded', (data) {
+      print("Item added");
+      setState(() {
+        // Add the new item to the list
+        Item newItem = Item();
+        newItem.setItemData(
+          data['url'],
+          data['desc'],
+          data['price'],
+          data['category'],
+          data['quant'],
+          data['shop'],
+        );
+        listItem.add(newItem);
+      });
     });
   }
 
