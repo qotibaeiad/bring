@@ -24,7 +24,7 @@ class customContainer extends StatelessWidget {
         ),
         child: ClipOval(
           child: Image.network(
-            "https://i.postimg.cc/B66nPWz3/5.png",
+            this.path,
             width: this.width,
             height: this.height,
             fit: BoxFit.cover,

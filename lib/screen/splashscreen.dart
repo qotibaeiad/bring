@@ -41,9 +41,6 @@ class _SplashScreenState extends State<SplashScreen> {
           );
           listItem.add(item);
         }
-        for (var element in listItem) {
-          print(element.price);
-        }
       });
     });
     socketService.socket.on('itemAdded', (data) {

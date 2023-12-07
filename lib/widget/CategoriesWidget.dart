@@ -23,7 +23,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
       print(item);
       setState(() {
         dataList.add(item);
-        _dataStreamController.add(dataList);
+        _dataStreamController.add(List.from(
+            dataList)); // Copy the list before adding it to the stream
       });
     });
   }
@@ -58,50 +59,71 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
         ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Row(
-            children: dataList
-                .map((item) => Container(
-                      padding: const EdgeInsets.all(8.0),
-                      margin: EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 5,
-                      ),
-                      height: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.7),
-                            spreadRadius: 1,
-                            blurRadius: 5,
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          customContainer(
-                            path:
-                                item.url, // assuming Item has a 'url' property
-                            radius: 20,
-                            elevation: 2,
-                            width: 50,
-                            height: 50,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(right: 5),
-                            child: Text(
-                              item.category, // assuming Item has a 'category' property
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
+          child: StreamBuilder<List<Item>>(
+            stream: _dataStreamController.stream,
+            builder: (context, snapshot) {
+              if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                return Container(); // Return an empty container if there is no data.
+              }
+
+              List<Item> items = snapshot.data!;
+              for (Item element in items) {
+                print("the url is: ");
+                print(element.url);
+              }
+              var length = items.length;
+              print("the length $length");
+
+              return SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    for (Item item in items)
+                      Container(
+                        // Add a unique key for each container
+                        padding: const EdgeInsets.all(8.0),
+                        margin: EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 5,
+                        ),
+                        height: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.7),
+                              spreadRadius: 1,
+                              blurRadius: 5,
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            customContainer(
+                              path: item.url,
+                              radius: 20,
+                              elevation: 2,
+                              width: 50,
+                              height: 50,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(right: 5),
+                              child: Text(
+                                item.category,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
-                          )
-                        ],
+                          ],
+                        ),
                       ),
-                    ))
-                .toList(),
+                  ],
+                ),
+              );
+            },
           ),
         ),
       ],
