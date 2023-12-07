@@ -22,9 +22,9 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     socketService.socket.emit("getItems");
-    print("request");
+    //print("request");
     socketService.socket.on('allItems', (data) {
-      print("I have all items");
+      //print("I have all items");
       //print(data);
       setState(() {
         // Clear the existing list and add new items
@@ -47,7 +47,7 @@ class _SplashScreenState extends State<SplashScreen> {
       });
     });
     socketService.socket.on('itemAdded', (data) {
-      print("Item added");
+      //print("Item added");
       setState(() {
         // Add the new item to the list
         Item newItem = Item();

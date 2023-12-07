@@ -23,8 +23,8 @@ class customContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(this.radius),
         ),
         child: ClipOval(
-          child: Image.asset(
-            this.path,
+          child: Image.network(
+            "https://i.postimg.cc/B66nPWz3/5.png",
             width: this.width,
             height: this.height,
             fit: BoxFit.cover,
