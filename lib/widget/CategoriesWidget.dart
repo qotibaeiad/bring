@@ -23,9 +23,26 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
       print(item);
       setState(() {
         dataList.add(item);
-        _dataStreamController.add(List.from(
-            dataList)); // Copy the list before adding it to the stream
+        _dataStreamController.add(dataList);
       });
+    });
+
+    // Listen for the 'deletestreamitems' event
+    // Listen for the 'deletestreamitems' event
+    socketService.socket.on('deletestreamitems', (deletedItem) {
+      try {
+        setState(() {
+          // Access the 'url' field, which is equivalent to MongoDB _id
+          String deletedItemId = deletedItem['url'];
+          print("the url is $deletedItemId");
+
+          // Remove the item with the specified ID from the list
+          dataList.removeWhere((item) => item.url == deletedItemId);
+          _dataStreamController.add(dataList);
+        });
+      } catch (e) {
+        print('Error handling deletestreamitems: $e');
+      }
     });
   }
 
