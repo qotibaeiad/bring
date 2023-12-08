@@ -32,6 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
         for (var itemData in data) {
           Item item = Item();
           item.setItemData(
+            itemData['_id'],
             itemData['url'],
             itemData['desc'],
             itemData['price'],
@@ -49,6 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
         // Add the new item to the list
         Item newItem = Item();
         newItem.setItemData(
+          data['_id'],
           data['url'],
           data['desc'],
           data['price'],
@@ -149,7 +151,8 @@ class _SplashScreenState extends State<SplashScreen> {
                   /////////
 
                   final Item item = Item();
-                  item.setItemData('name', 'sd', 'sd', 'sa', 'sd', 'sd');
+                  item.setItemData('12345678912345678912345', 'name', 'sd',
+                      'sd', 'sa', 'sd', 'sd');
                   socketService.sendMessage('addItem', item);
                   SideSheet.right(
                       body: Scaffold(
