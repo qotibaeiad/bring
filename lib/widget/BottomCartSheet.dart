@@ -34,7 +34,7 @@ class BottomCartSheet extends StatelessWidget {
                           padding: EdgeInsets.all(
                               MediaQuery.of(context).size.width * 0.004),
                           child: Image.asset(
-                            'images/7.png',
+                            'images/3.png',
                             height: MediaQuery.of(context).size.width * 0.14,
                             width: MediaQuery.of(context).size.width * 0.14,
                           ),

@@ -3,13 +3,7 @@ class User {
   late String phoneNumber;
 
   // Private constructor
-  User._private();
-
-  // Singleton instance
-  static final User _instance = User._private();
-
-  // Factory constructor to return the singleton instance
-  factory User() => _instance;
+  User();
 
   // Method to set user data
   void setUserData(String name, String phoneNumber) {

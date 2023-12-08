@@ -35,6 +35,22 @@ class SocketService {
   }
 
   void listenForMessages(Function(dynamic) callback) {
-    socket.on('message', callback);
+    //socket.on('message', callback);
+    socket.on('userAdded', (data) {
+      // Handle the 'userAdded' event data
+      callback(data);
+    });
+/*
+
+    socket.on('itemAdded', (data) {
+      print("Items add");
+      // Handle the 'itemAdded' event data
+      callback(data);
+    });
+*/
+    //socket.on('allItems', (items) {
+    // Handle the received items
+    //  callback(items);
+    // });
   }
 }
