@@ -18,31 +18,42 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
     super.initState();
     _dataStreamController = StreamController<List<Item>>.broadcast();
 
+    // Initial data load
     socketService.socket.on('streamitems', (data) {
-      Item item = Item.fromJson(data);
-      print(item);
-      setState(() {
-        dataList.add(item);
-        _dataStreamController.add(dataList);
-      });
+      handleItemEvent(data);
     });
 
-    // Listen for the 'deletestreamitems' event
-    // Listen for the 'deletestreamitems' event
-    socketService.socket.on('deletestreamitems', (deletedItem) {
+    // Handle item insert event
+    socketService.socket.on('streamitemsinsert', (data) {
+      handleItemEvent(data);
+    });
+
+    // Handle item update event
+    socketService.socket.on('streamitemsupdate', (data) {
+      handleItemEvent(data);
+    });
+
+    // Handle item delete event
+    socketService.socket.on('streamitemsdelete', (deletedItemId) {
       try {
         setState(() {
-          // Access the 'url' field, which is equivalent to MongoDB _id
-          String deletedItemId = deletedItem['url'];
-          print("the url is $deletedItemId");
-
+          print("the id :- $deletedItemId");
           // Remove the item with the specified ID from the list
-          dataList.removeWhere((item) => item.url == deletedItemId);
+          dataList.removeWhere((item) => item.id == deletedItemId);
           _dataStreamController.add(dataList);
         });
       } catch (e) {
-        print('Error handling deletestreamitems: $e');
+        print('Error handling streamitemsdelete: $e');
       }
+    });
+  }
+
+  void handleItemEvent(dynamic data) {
+    Item item = Item.fromJson(data);
+    print(item);
+    setState(() {
+      dataList.add(item);
+      _dataStreamController.add(dataList);
     });
   }
 
