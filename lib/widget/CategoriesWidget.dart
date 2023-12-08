@@ -30,7 +30,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
 
     // Handle item update event
     socketService.socket.on('streamitemsupdate', (data) {
-      handleItemEvent(data);
+      handleupdateItemEvent(data);
     });
 
     // Handle item delete event
@@ -46,6 +46,23 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
         print('Error handling streamitemsdelete: $e');
       }
     });
+  }
+
+  void handleupdateItemEvent(dynamic data) {
+    if (data != null) {
+      Item item = Item.fromJson(data);
+      print(item);
+      setState(() {
+        // Find and update the existing item in dataList with the new data
+        int index = dataList.indexWhere((element) => element.id == item.id);
+        if (index != -1) {
+          dataList[index] = item;
+          _dataStreamController.add(dataList);
+        }
+      });
+    } else {
+      print('Received null data from the server');
+    }
   }
 
   void handleItemEvent(dynamic data) {
