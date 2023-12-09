@@ -31,7 +31,6 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
     // Handle item update event
     socketService.socket.on('streamitemsupdate', (data) {
       Item item = Item.fromJson(data);
-      // print(item.category);
       handleupdateItemEvent(item.id, item);
     });
 
@@ -83,23 +82,21 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
 
   // Function to replace an item with a specific id in the stream
   void replaceItemInStream(String targetId, Item newItem) {
-    // Listen to the stream
-    _dataStreamController.stream.listen((List<Item> currentList) {
-      // Find the index of the item with the specified id
-      int index = currentList.indexWhere((item) => item.id == targetId);
+    // Find the index of the item with the specified id
+    int index = dataList.indexWhere((item) => item.id == targetId);
 
-      if (index != -1) {
-        // Replace the item at the found index with the new item
-        currentList[index] = newItem;
+    if (index != -1) {
+      // Replace the item at the found index with the new item
+      dataList[index] = newItem;
 
-        // Add the updated list back to the stream controller
-        _dataStreamController.sink.add(currentList);
+      // Add the updated list back to the stream controller
+      _dataStreamController.add(List.from(
+          dataList)); // Use List.from to create a new list to avoid direct mutation
 
-        print('Item with id $targetId replaced in the stream.');
-      } else {
-        print('Item with id $targetId not found in the stream.');
-      }
-    });
+      print('Item with id $targetId replaced in the stream.');
+    } else {
+      print('Item with id $targetId not found in the stream.');
+    }
   }
 
   void handleItemEvent(dynamic data) {
