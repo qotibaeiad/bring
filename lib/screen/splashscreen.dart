@@ -21,6 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    /*
     socketService.socket.emit("getItems");
     //print("request");
     socketService.socket.on('allItems', (data) {
@@ -61,6 +62,7 @@ class _SplashScreenState extends State<SplashScreen> {
         listItem.add(newItem);
       });
     });
+    */
   }
 
   @override
