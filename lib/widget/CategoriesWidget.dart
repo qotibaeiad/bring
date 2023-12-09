@@ -30,8 +30,12 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
 
     // Handle item update event
     socketService.socket.on('streamitemsupdate', (data) {
-      handleupdateItemEvent(data);
+      Item item = Item.fromJson(data);
+      // print(item.category);
+      handleupdateItemEvent(item.id, item);
     });
+
+// Other event listeners...
 
     // Handle item delete event
     socketService.socket.on('streamitemsdelete', (deletedItemId) {
@@ -48,26 +52,60 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
     });
   }
 
-  void handleupdateItemEvent(dynamic data) {
-    if (data != null) {
-      Item item = Item.fromJson(data);
-      print(item);
-      setState(() {
-        // Find and update the existing item in dataList with the new data
-        int index = dataList.indexWhere((element) => element.id == item.id);
-        if (index != -1) {
-          dataList[index] = item;
-          _dataStreamController.add(dataList);
-        }
-      });
+  void handleupdateItemEvent(String updatedDocumentId, Item updatedItem) {
+    // Function to get the index of an item with a specific id
+    // Function to replace an item with a specific id
+    int index = dataList.indexWhere((item) => item.id == updatedDocumentId);
+
+    if (index != -1) {
+      // Replace the item at the found index with the new item
+      dataList[index] = updatedItem;
+      print('Item with id $updatedDocumentId replaced successfully.');
     } else {
-      print('Received null data from the server');
+      print('Item with id $updatedDocumentId not found in the list.');
     }
+
+    setState(() {
+      // Find the index of the item with the specified ID
+      int index =
+          dataList.indexWhere((element) => element.id == updatedDocumentId);
+
+      if (index != -1) {
+        replaceItemInStream(updatedDocumentId, updatedItem);
+        // Replace the existing item with the new item
+        dataList[index] = updatedItem;
+
+        // Notify listeners about the change
+        _dataStreamController.add(dataList);
+      }
+    });
+  }
+
+  // Function to replace an item with a specific id in the stream
+  void replaceItemInStream(String targetId, Item newItem) {
+    // Listen to the stream
+    _dataStreamController.stream.listen((List<Item> currentList) {
+      // Find the index of the item with the specified id
+      int index = currentList.indexWhere((item) => item.id == targetId);
+
+      if (index != -1) {
+        // Replace the item at the found index with the new item
+        currentList[index] = newItem;
+
+        // Add the updated list back to the stream controller
+        _dataStreamController.sink.add(currentList);
+
+        print('Item with id $targetId replaced in the stream.');
+      } else {
+        print('Item with id $targetId not found in the stream.');
+      }
+    });
   }
 
   void handleItemEvent(dynamic data) {
     Item item = Item.fromJson(data);
     print(item);
+
     setState(() {
       dataList.add(item);
       _dataStreamController.add(dataList);
