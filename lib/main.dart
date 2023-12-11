@@ -1,4 +1,5 @@
 import 'package:bring/screen/Itemscreen.dart';
+import 'package:bring/screen/Login.dart';
 import 'package:bring/screen/splashscreen.dart';
 import 'package:flutter/material.dart';
 import 'server/socketserver.dart';
@@ -58,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SplashScreen(),
+      body: Login(),
     );
   }
 }

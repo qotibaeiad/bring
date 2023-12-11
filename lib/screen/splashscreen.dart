@@ -21,48 +21,6 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    /*
-    socketService.socket.emit("getItems");
-    //print("request");
-    socketService.socket.on('allItems', (data) {
-      //print("I have all items");
-      //print(data);
-      setState(() {
-        // Clear the existing list and add new items
-        listItem.clear();
-        for (var itemData in data) {
-          Item item = Item();
-          item.setItemData(
-            itemData['_id'],
-            itemData['url'],
-            itemData['desc'],
-            itemData['price'],
-            itemData['category'],
-            itemData['quant'],
-            itemData['shop'],
-          );
-          listItem.add(item);
-        }
-      });
-    });
-    socketService.socket.on('itemAdded', (data) {
-      //print("Item added");
-      setState(() {
-        // Add the new item to the list
-        Item newItem = Item();
-        newItem.setItemData(
-          data['_id'],
-          data['url'],
-          data['desc'],
-          data['price'],
-          data['category'],
-          data['quant'],
-          data['shop'],
-        );
-        listItem.add(newItem);
-      });
-    });
-    */
   }
 
   @override
@@ -112,9 +70,6 @@ class _SplashScreenState extends State<SplashScreen> {
           padding: EdgeInsets.only(
             left: MediaQuery.of(context).size.width * 0.040,
           ),
-          //left: MediaQuery.of(context).size.width * 0.050,
-          //top: MediaQuery.of(context).size.height * 0.030,
-          //bottom: MediaQuery.of(context).size.height * 0.10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
