@@ -1,6 +1,7 @@
 import 'package:bring/screen/Itemscreen.dart';
 import 'package:bring/screen/Login.dart';
 import 'package:bring/screen/splashscreen.dart';
+import 'package:bring/widget/TotalPrice.dart';
 import 'package:flutter/material.dart';
 import 'server/socketserver.dart';
 
@@ -58,8 +59,12 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Login(),
-    );
+        backgroundColor: Colors.white,
+        body: Stack(
+          children: [
+            SplashScreen(),
+            totalprice(),
+          ],
+        ));
   }
 }

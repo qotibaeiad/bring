@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bring/screen/homescreen.dart';
 import 'package:bring/widget/custom_TextField.dart';
 import 'package:flutter/material.dart';
@@ -11,44 +13,63 @@ class Login extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Center(
         child: Container(
-          padding: EdgeInsets.only(top: 150),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                width: 120,
-                height: 120,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey,
-                      spreadRadius: 0.7,
-                      blurRadius: 4,
-                      blurStyle: BlurStyle.normal,
-                    ),
-                  ],
-                ),
-                child: Icon(
-                  Icons.person,
-                  size: 100,
+              Material(
+                elevation: 10,
+                child: Container(
+                  child: Image.asset(
+                    'images/logo1.jpg',
+                  ),
                 ),
               ),
-              Container(
-                child: Column(
-                  children: [
-                    customTextfield(
-                      padding: 20,
-                      height: 90,
-                      width: 300,
-                      hintText: "Phone Number",
-                      border: 23,
-                      onChanged: (value) {},
-                    )
-                  ],
-                ),
-              )
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: 120,
+                    height: 120,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey,
+                          spreadRadius: 0.7,
+                          blurRadius: 4,
+                          blurStyle: BlurStyle.normal,
+                        ),
+                      ],
+                    ),
+                    child: Icon(
+                      Icons.person,
+                      size: 100,
+                      color: Colors.grey[700],
+                    ),
+                  ),
+                  Container(
+                    // padding: EdgeInsets.only(bottom: 300),
+                    child: Column(
+                      children: [
+                        MaterialButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                  10) // Adjust the radius as needed
+                              ),
+                          elevation: 7,
+                          onPressed: () {},
+                          color: Colors.white,
+                          child: Text(
+                            'Login',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
