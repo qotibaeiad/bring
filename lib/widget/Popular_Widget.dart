@@ -54,7 +54,8 @@ class PopularWidget extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.all(0),
                         child: customContainer(
-                          path: 'images/logo1.jpg',
+                          path:
+                              'https://photographer.paulewilliams.com/img-get2/I0000KOB2xgu0Re0/fit=1000x750/g=G0000DfCioCaOdiU/11598-Burger-In-Bun-Photos.jpg',
                           radius: 20,
                           elevation: 10,
                           width: 50,

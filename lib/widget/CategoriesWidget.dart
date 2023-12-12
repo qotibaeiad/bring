@@ -143,7 +143,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
             stream: _dataStreamController.stream,
             builder: (context, snapshot) {
               if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                return Container(); // Return an empty container if there is no data.
+                return CircularProgressIndicator(); // Return an empty container if there is no data.
               }
 
               List<Item> items = snapshot.data!;
