@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:bring/screen/homescreen.dart';
 import 'package:bring/widget/custom_TextField.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -116,6 +117,8 @@ class Login extends StatelessWidget {
       ),
       width: 50,
       child: TextField(
+        keyboardType: TextInputType.number,
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         decoration: InputDecoration(
           border: InputBorder.none, // Remove the default TextField border
         ),
