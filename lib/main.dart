@@ -63,11 +63,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        body: Stack(
+        body:
+            Login() /*Stack(
           children: [
             SplashScreen(),
             totalprice(),
           ],
-        ));
+        )*/
+        );
   }
 }

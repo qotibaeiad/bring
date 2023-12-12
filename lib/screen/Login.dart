@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:math';
 
 import 'package:bring/screen/homescreen.dart';
@@ -11,67 +12,112 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
-        child: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Column(
+        children: [
+          Stack(
             children: [
-              Material(
-                elevation: 10,
-                child: Container(
-                  child: Image.asset(
-                    'images/logo1.jpg',
-                  ),
-                ),
+              Container(
+                height: 180,
+                decoration: BoxDecoration(
+                    border: Border.all(
+                        style: BorderStyle.solid, color: Colors.black45),
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(
+                          "https://photographer.paulewilliams.com/img-get2/I0000KOB2xgu0Re0/fit=1000x750/g=G0000DfCioCaOdiU/11598-Burger-In-Bun-Photos.jpg"),
+                    ),
+
+                    // color: Colors.blue[900],
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [BoxShadow(blurRadius: 7)]),
               ),
               Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    width: 120,
-                    height: 120,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          spreadRadius: 0.7,
-                          blurRadius: 4,
-                          blurStyle: BlurStyle.normal,
+                  SizedBox(
+                    height: 90,
+                  ),
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 39),
+                      child: Container(
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                            boxShadow: [BoxShadow(blurRadius: 9)],
+                            borderRadius: BorderRadius.circular(50),
+                            color: Colors.white),
+                        child: Center(
+                          child: Text(
+                            'Bring',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                color: Colors.blue[900]),
+                          ),
                         ),
-                      ],
-                    ),
-                    child: Icon(
-                      Icons.person,
-                      size: 100,
-                      color: Colors.grey[700],
+                      ),
                     ),
                   ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ContainerLogin(),
+                      SizedBox(width: 13),
+                      ContainerLogin(),
+                      SizedBox(width: 13),
+                      ContainerLogin(),
+                      SizedBox(width: 13),
+                      ContainerLogin(),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  InkWell(
+                    child: Text(
+                      'Resend the code?',
+                      style: TextStyle(color: Colors.blue[500]),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
                   Container(
-                    // padding: EdgeInsets.only(bottom: 300),
-                    child: Column(
-                      children: [
-                        MaterialButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  10) // Adjust the radius as needed
-                              ),
-                          elevation: 7,
-                          onPressed: () {},
-                          color: Colors.white,
-                          child: Text(
-                            'Login',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        )
-                      ],
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [BoxShadow(blurRadius: 9)],
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: Icon(
+                      Icons.login_outlined,
+                      size: 30,
+                      color: Colors.blue[900],
                     ),
                   ),
                 ],
-              ),
+              )
             ],
-          ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Container ContainerLogin() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0), // Set the border radius
+        border: Border.all(color: Colors.grey), // Set the border color
+      ),
+      width: 50,
+      child: TextField(
+        decoration: InputDecoration(
+          border: InputBorder.none, // Remove the default TextField border
         ),
       ),
     );
