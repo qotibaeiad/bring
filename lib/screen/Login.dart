@@ -6,13 +6,20 @@ import 'package:bring/widget/custom_TextField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({super.key});
+
+  @override
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  List<FocusNode> focusNodes = List.generate(4, (index) => FocusNode());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue[900],
       body: Column(
         children: [
           Stack(
@@ -65,13 +72,13 @@ class Login extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ContainerLogin(),
+                      ContainerLogin(focusNode: focusNodes[0]),
                       SizedBox(width: 13),
-                      ContainerLogin(),
+                      ContainerLogin(focusNode: focusNodes[1]),
                       SizedBox(width: 13),
-                      ContainerLogin(),
+                      ContainerLogin(focusNode: focusNodes[2]),
                       SizedBox(width: 13),
-                      ContainerLogin(),
+                      ContainerLogin(focusNode: focusNodes[3]),
                     ],
                   ),
                   SizedBox(
@@ -80,7 +87,7 @@ class Login extends StatelessWidget {
                   InkWell(
                     child: Text(
                       'Resend the code?',
-                      style: TextStyle(color: Colors.blue[500]),
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                   SizedBox(
@@ -103,26 +110,57 @@ class Login extends StatelessWidget {
                 ],
               )
             ],
-          )
+          ),
         ],
       ),
     );
   }
 
-  Container ContainerLogin() {
+  Container ContainerLogin({required FocusNode focusNode}) {
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0), // Set the border radius
-        border: Border.all(color: Colors.grey), // Set the border color
-      ),
       width: 50,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        border: Border.all(color: Colors.grey),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.white.withOpacity(0.1),
+            spreadRadius: 0.2,
+            blurRadius: 5,
+            offset: Offset(0, 3),
+          ),
+        ],
+      ),
       child: TextField(
+        cursorColor: Colors.white,
+        focusNode: focusNode,
+        onChanged: (value) {
+          if (value.isNotEmpty) {
+            moveFocus(focusNode);
+          }
+        },
+        style: TextStyle(
+          color: Colors.white,
+        ),
         keyboardType: TextInputType.number,
-        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+        inputFormatters: [
+          FilteringTextInputFormatter.digitsOnly,
+          LengthLimitingTextInputFormatter(1),
+        ],
+        maxLength: 1,
+        textAlign: TextAlign.center,
         decoration: InputDecoration(
-          border: InputBorder.none, // Remove the default TextField border
+          border: InputBorder.none,
+          counterText: "",
         ),
       ),
     );
+  }
+
+  void moveFocus(FocusNode focusNode) {
+    int currentIndex = focusNodes.indexOf(focusNode);
+    if (currentIndex < focusNodes.length - 1) {
+      FocusScope.of(context).requestFocus(focusNodes[currentIndex + 1]);
+    }
   }
 }
