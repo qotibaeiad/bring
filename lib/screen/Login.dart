@@ -19,99 +19,119 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[900],
-      body: Column(
-        children: [
-          Stack(
-            children: [
-              Container(
-                height: 180,
-                decoration: BoxDecoration(
-                    border: Border.all(
-                        style: BorderStyle.solid, color: Colors.black45),
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage(
-                          "https://photographer.paulewilliams.com/img-get2/I0000KOB2xgu0Re0/fit=1000x750/g=G0000DfCioCaOdiU/11598-Burger-In-Bun-Photos.jpg"),
-                    ),
-
-                    // color: Colors.blue[900],
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [BoxShadow(blurRadius: 7)]),
-              ),
-              Column(
-                children: [
-                  SizedBox(
-                    height: 90,
-                  ),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 39),
-                      child: Container(
-                        width: 100,
-                        height: 100,
-                        decoration: BoxDecoration(
-                            boxShadow: [BoxShadow(blurRadius: 9)],
-                            borderRadius: BorderRadius.circular(50),
-                            color: Colors.white),
-                        child: Center(
-                          child: Text(
-                            'Bring',
+      backgroundColor: Colors.grey[300],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding:
+              const EdgeInsets.only(top: 130, left: 30, right: 30, bottom: 110),
+          child: Container(
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(40),
+                boxShadow: [BoxShadow(blurRadius: 5)]),
+            child: Column(
+              children: [
+                Stack(
+                  children: [
+                    Column(
+                      children: [
+                        Text(
+                          'Let\'s',
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue[900]),
+                        ),
+                        Text(
+                          'verify your',
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue[900]),
+                        ),
+                        Text(
+                          'account',
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue[900]),
+                        ),
+                        Container(
+                          child: Image.asset(
+                            './images/vervifcation.jpg',
+                            fit: BoxFit.cover,
+                          ),
+                          height: 300,
+                          width: 150,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(90),
+                              color: Colors.black),
+                        ),
+                        Text('We\'ll send a code to your',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold,
                                 fontSize: 20,
-                                color: Colors.blue[900]),
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black54)),
+                        Text('Phone number',
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black54)),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ContainerLogin(focusNode: focusNodes[0]),
+                            SizedBox(width: 13),
+                            ContainerLogin(focusNode: focusNodes[1]),
+                            SizedBox(width: 13),
+                            ContainerLogin(focusNode: focusNodes[2]),
+                            SizedBox(width: 13),
+                            ContainerLogin(focusNode: focusNodes[3]),
+                          ],
+                        ),
+                        InkWell(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 115, top: 10),
+                            child: Text(
+                              'Resend the code?',
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.blue[700],
+                                  decoration: TextDecoration.underline),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ContainerLogin(focusNode: focusNodes[0]),
-                      SizedBox(width: 13),
-                      ContainerLogin(focusNode: focusNodes[1]),
-                      SizedBox(width: 13),
-                      ContainerLogin(focusNode: focusNodes[2]),
-                      SizedBox(width: 13),
-                      ContainerLogin(focusNode: focusNodes[3]),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  InkWell(
-                    child: Text(
-                      'Resend the code?',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [BoxShadow(blurRadius: 9)],
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    child: Icon(
-                      Icons.login_outlined,
-                      size: 30,
-                      color: Colors.blue[900],
-                    ),
-                  ),
-                ],
-              )
-            ],
+                        SizedBox(
+                          height: 30,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: Container(
+                            width: 50,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: [BoxShadow(blurRadius: 9)],
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            child: Icon(
+                              Icons.login_outlined,
+                              size: 30,
+                              color: Colors.blue[900],
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
-        ],
+        ),
       ),
     );
   }
