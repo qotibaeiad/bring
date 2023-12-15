@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    socketService = SocketService('192.168.14.9:3000');
+    socketService = SocketService('10.0.0.44:3000');
     socketService.connect();
     socketService.listenForMessages((data) {
       print('Message from the node server: $data');

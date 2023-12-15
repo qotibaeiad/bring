@@ -22,9 +22,9 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     socketService.socket.emit("getItems");
-    print("request");
+    //print("request");
     socketService.socket.on('allItems', (data) {
-      print("I have all items");
+      //print("I have all items");
       //print(data);
       setState(() {
         // Clear the existing list and add new items
@@ -32,6 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
         for (var itemData in data) {
           Item item = Item();
           item.setItemData(
+            itemData['_id'],
             itemData['url'],
             itemData['desc'],
             itemData['price'],
@@ -41,17 +42,15 @@ class _SplashScreenState extends State<SplashScreen> {
           );
           listItem.add(item);
         }
-        for (var element in listItem) {
-          print(element.price);
-        }
       });
     });
     socketService.socket.on('itemAdded', (data) {
-      print("Item added");
+      //print("Item added");
       setState(() {
         // Add the new item to the list
         Item newItem = Item();
         newItem.setItemData(
+          data['_id'],
           data['url'],
           data['desc'],
           data['price'],
@@ -152,7 +151,8 @@ class _SplashScreenState extends State<SplashScreen> {
                   /////////
 
                   final Item item = Item();
-                  item.setItemData('name', 'sd', 'sd', 'sa', 'sd', 'sd');
+                  item.setItemData('12345678912345678912345', 'name', 'sd',
+                      'sd', 'sa', 'sd', 'sd');
                   socketService.sendMessage('addItem', item);
                   SideSheet.right(
                       body: Scaffold(
