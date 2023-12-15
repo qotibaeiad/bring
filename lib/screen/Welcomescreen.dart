@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 class welcomescreen extends StatefulWidget {
   const welcomescreen({Key? key}) : super(key: key);
@@ -8,6 +9,12 @@ class welcomescreen extends StatefulWidget {
 }
 
 class _welcomescreenState extends State<welcomescreen> {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  final TextEditingController controller = TextEditingController();
+  String initialCountry = 'IL';
+  PhoneNumber number = PhoneNumber(isoCode: 'IL');
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -25,6 +32,7 @@ class _welcomescreenState extends State<welcomescreen> {
           padding:
               const EdgeInsets.only(top: 450, bottom: 30, left: 20, right: 20),
           child: Container(
+            padding: EdgeInsets.only(top: 40),
             width: 500,
             height: 350,
             decoration: BoxDecoration(
@@ -37,43 +45,78 @@ class _welcomescreenState extends State<welcomescreen> {
                 SizedBox(
                   height: 40,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20),
+                Center(
                   child: Text(
-                    'Enter your phone number',
+                    'Enter your Phone Number:',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                        fontSize: 19,
+                        color: Colors.blue[900]),
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Center(
+                  child: Text(
+                    'We will send you 4 digit verification code',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
                         color: Colors.black54),
                   ),
                 ),
                 SizedBox(
-                  height: 25,
+                  height: 30,
                 ),
                 Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Container(
-                      child: Text('good'),
-                    )),
+                  padding: const EdgeInsets.only(left: 18, right: 18),
+                  child: InternationalPhoneNumberInput(
+                    onInputChanged: (PhoneNumber number) {
+                      print(number.phoneNumber);
+                    },
+                    onInputValidated: (bool value) {
+                      print(value);
+                    },
+                    selectorConfig: SelectorConfig(
+                      selectorType: PhoneInputSelectorType.DIALOG,
+                    ),
+                    ignoreBlank: false,
+                    autoValidateMode: AutovalidateMode.disabled,
+                    selectorTextStyle: TextStyle(color: Colors.black),
+                    initialValue:
+                        PhoneNumber(isoCode: 'IL'), // Set the initial country
+                    textFieldController: TextEditingController(),
+                    inputDecoration: InputDecoration(
+                      labelText: 'Phone Number',
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(),
+                      ),
+                    ),
+                    onSaved: (PhoneNumber number) {
+                      print('On Saved: $number');
+                    },
+                  ),
+                ),
                 SizedBox(
-                  height: 50,
+                  height: 30,
                 ),
                 Center(
                   child: MaterialButton(
                     onPressed: (() => {}),
                     child: Container(
                       height: 50,
-                      width: 50,
+                      width: 100,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Colors.blue[900],
                         borderRadius: BorderRadius.circular(90),
                         boxShadow: [BoxShadow(blurRadius: 6, spreadRadius: 1)],
                       ),
-                      child: Icon(
-                        Icons.send,
-                        color: Colors.black87,
-                        size: 40,
-                      ),
+                      child: Center(
+                          child: Text(
+                        'Send',
+                        style: TextStyle(color: Colors.white),
+                      )),
                     ),
                   ),
                 ),
@@ -85,7 +128,6 @@ class _welcomescreenState extends State<welcomescreen> {
     ));
   }
 
-/*
   void getPhoneNumber(String phoneNumber) async {
     PhoneNumber number =
         await PhoneNumber.getRegionInfoFromPhoneNumber(phoneNumber, 'US');
@@ -94,5 +136,4 @@ class _welcomescreenState extends State<welcomescreen> {
       this.number = number;
     });
   }
-  */
 }
