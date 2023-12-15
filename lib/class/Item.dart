@@ -13,13 +13,13 @@ class Item {
   // Factory constructor to create an Item object from JSON
   factory Item.fromJson(Map<String, dynamic> json) {
     Item item = Item();
-    item.id = json['_id'];
-    item.url = json['url'];
-    item.desc = json['desc'];
-    item.price = json['price'];
-    item.category = json['category'];
-    item.quant = json['quant'];
-    item.shop = json['shop'];
+    item.id = json['_id'] ?? ''; // Add null check and provide a default value
+    item.url = json['url'] ?? '';
+    item.desc = json['desc'] ?? '';
+    item.price = json['price'] ?? '';
+    item.category = json['category'] ?? '';
+    item.quant = json['quant'] ?? '';
+    item.shop = json['shop'] ?? '';
     return item;
   }
 

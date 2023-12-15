@@ -69,8 +69,8 @@ class ItemWidget extends StatelessWidget {
                       child: Container(
                         // margin: EdgeInsets.only(
                         //   bottom: MediaQuery.of(context).size.width * 0.0001),
-                        child: Image.asset(
-                          'images/3.png',
+                        child: Image.network(
+                          'https://photographer.paulewilliams.com/img-get2/I0000KOB2xgu0Re0/fit=1000x750/g=G0000DfCioCaOdiU/11598-Burger-In-Bun-Photos.jpg',
                           height: MediaQuery.of(context).size.height * 0.15,
                           width: MediaQuery.of(context).size.width * 0.30,
                         ),

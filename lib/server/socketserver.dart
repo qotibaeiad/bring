@@ -41,11 +41,6 @@ class SocketService {
       callback(data);
     });
 
-    socket.on('streamitems', (data) {
-      print("Received data list: $data");
-      // Assuming data is a List<Item>
-    });
-
 /*
 
     socket.on('itemAdded', (data) {

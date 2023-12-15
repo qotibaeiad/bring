@@ -18,27 +18,35 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
     super.initState();
     _dataStreamController = StreamController<List<Item>>.broadcast();
 
+    // Initial data load
     socketService.socket.on('streamitems', (data) {
-      Item item = Item.fromJson(data);
-      print(item);
-      setState(() {
-        dataList.add(item);
-        _dataStreamController.add(dataList);
-      });
+      handleItemEvent(data);
     });
 
-    socketService.socket.on('deletestreamitems', (deletedItem) {
+    // Handle item insert event
+    socketService.socket.on('streamitemsinsert', (data) {
+      handleItemEvent(data);
+    });
+
+    // Handle item update event
+    socketService.socket.on('streamitemsupdate', (data) {
+      Item item = Item.fromJson(data);
+      handleupdateItemEvent(item.id, item);
+    });
+
+// Other event listeners...
+
+    // Handle item delete event
+    socketService.socket.on('streamitemsdelete', (deletedItemId) {
       try {
         setState(() {
-          String deletedItemId = deletedItem['_id'];
-          print("the id is $deletedItemId");
-
-          // Use removeWhere with a predicate function to find the item with the matching id
+          print("the id :- $deletedItemId");
+          // Remove the item with the specified ID from the list
           dataList.removeWhere((item) => item.id == deletedItemId);
           _dataStreamController.add(dataList);
         });
       } catch (e) {
-        print('Error handling deletestreamitems: $e');
+        print('Error handling streamitemsdelete: $e');
       }
     });
 
@@ -64,6 +72,64 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
       } catch (e) {
         print('Error handling updateitem: $e');
       }
+    });
+  }
+
+  void handleupdateItemEvent(String updatedDocumentId, Item updatedItem) {
+    // Function to get the index of an item with a specific id
+    // Function to replace an item with a specific id
+    int index = dataList.indexWhere((item) => item.id == updatedDocumentId);
+
+    if (index != -1) {
+      // Replace the item at the found index with the new item
+      dataList[index] = updatedItem;
+      print('Item with id $updatedDocumentId replaced successfully.');
+    } else {
+      print('Item with id $updatedDocumentId not found in the list.');
+    }
+
+    setState(() {
+      // Find the index of the item with the specified ID
+      int index =
+          dataList.indexWhere((element) => element.id == updatedDocumentId);
+
+      if (index != -1) {
+        replaceItemInStream(updatedDocumentId, updatedItem);
+        // Replace the existing item with the new item
+        dataList[index] = updatedItem;
+
+        // Notify listeners about the change
+        _dataStreamController.add(dataList);
+      }
+    });
+  }
+
+  // Function to replace an item with a specific id in the stream
+  void replaceItemInStream(String targetId, Item newItem) {
+    // Find the index of the item with the specified id
+    int index = dataList.indexWhere((item) => item.id == targetId);
+
+    if (index != -1) {
+      // Replace the item at the found index with the new item
+      dataList[index] = newItem;
+
+      // Add the updated list back to the stream controller
+      _dataStreamController.add(List.from(
+          dataList)); // Use List.from to create a new list to avoid direct mutation
+
+      print('Item with id $targetId replaced in the stream.');
+    } else {
+      print('Item with id $targetId not found in the stream.');
+    }
+  }
+
+  void handleItemEvent(dynamic data) {
+    Item item = Item.fromJson(data);
+    print(item);
+
+    setState(() {
+      dataList.add(item);
+      _dataStreamController.add(dataList);
     });
   }
 
@@ -101,7 +167,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
             stream: _dataStreamController.stream,
             builder: (context, snapshot) {
               if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                return Container(); // Return an empty container if there is no data.
+                return CircularProgressIndicator(); // Return an empty container if there is no data.
               }
 
               List<Item> items = snapshot.data!;
