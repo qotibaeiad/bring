@@ -103,7 +103,8 @@ class _welcomescreenState extends State<welcomescreen> {
                 ),
                 Center(
                   child: MaterialButton(
-                    onPressed: (() => {}),
+                    onPressed: (() =>
+                        {Navigator.pushNamed(context, 'Verification')}),
                     child: Container(
                       height: 50,
                       width: 100,

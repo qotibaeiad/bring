@@ -101,22 +101,31 @@ class _LoginState extends State<Login> {
                         SizedBox(
                           height: 30,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [BoxShadow(blurRadius: 9)],
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: Icon(
-                              Icons.login_outlined,
-                              size: 30,
-                              color: Colors.blue[900],
+                        //
+                        Center(
+                          child: MaterialButton(
+                            onPressed: (() =>
+                                {Navigator.pushNamed(context, 'splashscreen')}),
+                            child: Container(
+                              height: 50,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                color: Colors.blue[900],
+                                borderRadius: BorderRadius.circular(90),
+                                boxShadow: [
+                                  BoxShadow(blurRadius: 6, spreadRadius: 1)
+                                ],
+                              ),
+                              child: Center(
+                                  child: Text(
+                                'Send',
+                                style: TextStyle(color: Colors.white),
+                              )),
                             ),
                           ),
+                        ),
+                        SizedBox(
+                          height: 20,
                         ),
                       ],
                     )

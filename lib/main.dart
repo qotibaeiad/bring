@@ -1,4 +1,4 @@
-import 'package:bring/screen/Itemscreen.dart';
+import 'package:bring/screen/Verification.dart';
 import 'package:bring/screen/Welcomescreen.dart';
 import 'package:bring/screen/splashscreen.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +19,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
       routes: {
-        '/splashscreen': (context) => SplashScreen(),
-        //'Login': (context) => messagescreen(),
-        'itempscreen': (context) => ItemPage(),
+        'splashscreen': (context) => SplashScreen(),
+        'Verification': (context) => Login(),
+        'welcomescreen': (context) => welcomescreen(),
       },
     );
   }
