@@ -186,7 +186,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ),
         ),
-        totalprice(),
+        TotalPrice(),
       ],
     );
   }

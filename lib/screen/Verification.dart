@@ -58,7 +58,7 @@ class _LoginState extends State<Login> {
                           width: 150,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(90),
-                              color: Colors.black),
+                              color: Colors.white),
                         ),
                         Text('We\'ll send a code to your',
                             style: TextStyle(
