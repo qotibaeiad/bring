@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
-class totalprice extends StatefulWidget {
-  const totalprice({super.key});
+class TotalPrice extends StatefulWidget {
+  const TotalPrice({Key? key}) : super(key: key);
 
   @override
-  State<totalprice> createState() => _totalpriceState();
+  _TotalPriceState createState() => _TotalPriceState();
 }
 
-class _totalpriceState extends State<totalprice> {
+class _TotalPriceState extends State<TotalPrice> {
+  int totalPrice = 0;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,17 +18,17 @@ class _totalpriceState extends State<totalprice> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Container(
-            padding: EdgeInsets.only(bottom: 2, left: 10, right: 10),
+            padding: EdgeInsets.only(left: 10, right: 10),
             height: 50,
             width: 400,
             decoration: BoxDecoration(
               color: Colors.blue[900],
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                    blurRadius: 0.5,
-                    spreadRadius: 2,
-                    blurStyle: BlurStyle.normal),
+                  blurRadius: 0.5,
+                  spreadRadius: 1.7,
+                ),
               ],
             ),
             child: Row(
@@ -35,16 +37,16 @@ class _totalpriceState extends State<totalprice> {
                 Text(
                   'Total',
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: 20),
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
                 ),
                 Text(
-                  '\$20',
+                  '\$$totalPrice',
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: 20),
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
                 ),
               ],
             ),
@@ -52,5 +54,11 @@ class _totalpriceState extends State<totalprice> {
         ],
       ),
     );
+  }
+
+  void inncrementPrice() {
+    setState(() {
+      totalPrice = totalPrice + 1;
+    });
   }
 }

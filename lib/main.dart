@@ -1,4 +1,4 @@
-import 'package:bring/screen/Itemscreen.dart';
+import 'package:bring/screen/Verification.dart';
 import 'package:bring/screen/Welcomescreen.dart';
 import 'package:bring/screen/splashscreen.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +19,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
       routes: {
-        '/splashscreen': (context) => SplashScreen(),
-        //'Login': (context) => messagescreen(),
-        'itempscreen': (context) => ItemPage(),
+        'splashscreen': (context) => SplashScreen(),
+        'Verification': (context) => Login(),
+        'welcomescreen': (context) => welcomescreen(),
       },
     );
   }
@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    socketService = SocketService('10.0.0.44:3000');
+    socketService = SocketService('192.168.14.9:3000');
     socketService.connect();
     socketService.listenForMessages((data) {
       print('Message from the node server: $data');
@@ -58,14 +58,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body:
-            welcomescreen() /*Stack(
-          children: [
-            SplashScreen(),
-            totalprice(),
-          ],
-        )*/
-        );
+      backgroundColor: Colors.white,
+      body: welcomescreen(),
+    );
   }
 }

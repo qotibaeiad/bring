@@ -18,6 +18,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
     super.initState();
     _dataStreamController = StreamController<List<Item>>.broadcast();
 
+    socketService.socket.emit('streamitem');
     // Initial data load
     socketService.socket.on('streamitems', (data) {
       handleItemEvent(data);

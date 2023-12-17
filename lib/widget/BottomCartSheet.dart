@@ -1,8 +1,22 @@
+import 'package:bring/widget/TotalPrice.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class BottomCartSheet extends StatelessWidget {
-  const BottomCartSheet({Key? key});
+class BottomCartSheet extends StatefulWidget {
+  BottomCartSheet({Key? key}) : super(key: key);
+
+  @override
+  _BottomCartSheetState createState() => _BottomCartSheetState();
+}
+
+class _BottomCartSheetState extends State<BottomCartSheet> {
+  late int quantity;
+
+  @override
+  void initState() {
+    super.initState();
+    quantity = 1;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,11 +26,12 @@ class BottomCartSheet extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                for (int i = 0; i < 15; i++)
+                for (int i = 0; i < 8; i++)
                   Container(
                     margin: EdgeInsets.symmetric(
-                        vertical: MediaQuery.of(context).size.height * 0.011,
-                        horizontal: MediaQuery.of(context).size.width * 0.050),
+                      vertical: MediaQuery.of(context).size.height * 0.011,
+                      horizontal: MediaQuery.of(context).size.width * 0.050,
+                    ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
@@ -32,9 +47,10 @@ class BottomCartSheet extends StatelessWidget {
                       children: [
                         Padding(
                           padding: EdgeInsets.all(
-                              MediaQuery.of(context).size.width * 0.004),
+                            MediaQuery.of(context).size.width * 0.004,
+                          ),
                           child: Image.asset(
-                            'images/3.png',
+                            'images/Login.jpg',
                             height: MediaQuery.of(context).size.width * 0.14,
                             width: MediaQuery.of(context).size.width * 0.14,
                           ),
@@ -44,8 +60,9 @@ class BottomCartSheet extends StatelessWidget {
                           children: [
                             Container(
                               margin: EdgeInsets.only(
-                                  bottom: MediaQuery.of(context).size.height *
-                                      0.019),
+                                bottom:
+                                    MediaQuery.of(context).size.height * 0.019,
+                              ),
                               child: Text(
                                 'Item Title',
                                 style: TextStyle(
@@ -73,10 +90,11 @@ class BottomCartSheet extends StatelessWidget {
                         Spacer(),
                         Padding(
                           padding: EdgeInsets.symmetric(
-                              horizontal:
-                                  MediaQuery.of(context).size.width * 0.007,
-                              vertical:
-                                  MediaQuery.of(context).size.height * 0.006),
+                            horizontal:
+                                MediaQuery.of(context).size.width * 0.007,
+                            vertical:
+                                MediaQuery.of(context).size.height * 0.006,
+                          ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
@@ -95,8 +113,8 @@ class BottomCartSheet extends StatelessWidget {
                                 children: [
                                   Container(
                                     padding: EdgeInsets.all(
-                                        MediaQuery.of(context).size.width *
-                                            0.002),
+                                      MediaQuery.of(context).size.width * 0.002,
+                                    ),
                                     decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(20),
@@ -108,19 +126,29 @@ class BottomCartSheet extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    child: Icon(
-                                      CupertinoIcons.minus,
-                                      size: MediaQuery.of(context).size.width *
-                                          0.044,
+                                    child: InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          quantity =
+                                              quantity > 1 ? quantity - 1 : 1;
+                                        });
+                                      },
+                                      child: Icon(
+                                        CupertinoIcons.minus,
+                                        size:
+                                            MediaQuery.of(context).size.width *
+                                                0.044,
+                                      ),
                                     ),
                                   ),
                                   Container(
                                     margin: EdgeInsets.symmetric(
-                                        horizontal:
-                                            MediaQuery.of(context).size.width *
-                                                0.016),
+                                      horizontal:
+                                          MediaQuery.of(context).size.width *
+                                              0.016,
+                                    ),
                                     child: Text(
-                                      '02',
+                                      quantity.toString(),
                                       style: TextStyle(
                                         fontSize:
                                             MediaQuery.of(context).size.width *
@@ -142,10 +170,18 @@ class BottomCartSheet extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    child: Icon(
-                                      CupertinoIcons.plus,
-                                      size: MediaQuery.of(context).size.width *
-                                          0.044,
+                                    child: InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          quantity = quantity + 1;
+                                        });
+                                      },
+                                      child: Icon(
+                                        CupertinoIcons.plus,
+                                        size:
+                                            MediaQuery.of(context).size.width *
+                                                0.044,
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -163,8 +199,9 @@ class BottomCartSheet extends StatelessWidget {
         ),
         Container(
           margin: EdgeInsets.symmetric(
-              vertical: MediaQuery.of(context).size.height * 0.014,
-              horizontal: MediaQuery.of(context).size.width * 0.025),
+            vertical: MediaQuery.of(context).size.height * 0.014,
+            horizontal: MediaQuery.of(context).size.width * 0.025,
+          ),
           padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -180,13 +217,13 @@ class BottomCartSheet extends StatelessWidget {
           child: Column(
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Delivery',
+                    'quantity',
                     style: TextStyle(
                       fontSize: MediaQuery.of(context).size.width * 0.044,
                       fontWeight: FontWeight.bold,
-                      color: Colors.blue[900],
                     ),
                   ),
                 ],
