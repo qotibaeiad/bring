@@ -1,5 +1,6 @@
 import 'package:bring/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 class welcomescreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class _welcomescreenState extends State<welcomescreen> {
   final TextEditingController controller = TextEditingController();
   String initialCountry = 'IL';
   PhoneNumber number = PhoneNumber(isoCode: 'IL');
-
+  late String Num;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -74,6 +75,7 @@ class _welcomescreenState extends State<welcomescreen> {
                   padding: const EdgeInsets.only(left: 18, right: 18),
                   child: InternationalPhoneNumberInput(
                     onInputChanged: (PhoneNumber number) {
+                      Num = number.phoneNumber!;
                       print(number.phoneNumber);
                     },
                     onInputValidated: (bool value) {
@@ -107,15 +109,10 @@ class _welcomescreenState extends State<welcomescreen> {
                     // Client side (Flutter app)
                     onPressed: () {
                       // Convert PhoneNumber instance to Map<String, dynamic> before sending
-                      Map<String, dynamic> phoneNumberData = {
-                        'phoneNumber': this.number.phoneNumber,
-                        'isoCode': this.number.isoCode,
-                        // Add any other necessary fields
-                      };
 
                       // Emit the Map instead of the PhoneNumber instance
-                      socketService.socket
-                          .emit("phonenumber", this.number.phoneNumber);
+
+                      socketService.socket.emit("phonenumber", Num);
                       Navigator.pushNamed(context, 'Verification');
                     },
 
