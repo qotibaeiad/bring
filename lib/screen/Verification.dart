@@ -92,7 +92,7 @@ class _LoginState extends State<Login> {
                               'Resend the code?',
                               style: TextStyle(
                                 fontSize: 15,
-                                color: Colors.blue[700],
+                                color: Colors.blue[500],
                                 decoration: TextDecoration.underline,
                               ),
                             ),
@@ -110,7 +110,7 @@ class _LoginState extends State<Login> {
                               height: 50,
                               width: 100,
                               decoration: BoxDecoration(
-                                color: Colors.blue[900],
+                                color: Colors.blue[500],
                                 borderRadius: BorderRadius.circular(90),
                                 boxShadow: [
                                   BoxShadow(blurRadius: 6, spreadRadius: 1)
@@ -196,7 +196,7 @@ class _LoginState extends State<Login> {
 
   TextStyle getTextStyle(FocusNode focusNode) {
     return TextStyle(
-      color: focusNode.hasFocus ? Colors.blue[900] : Colors.black,
+      color: focusNode.hasFocus ? Colors.blue[500] : Colors.black,
       fontSize: 30,
       fontWeight: FontWeight.bold,
     );

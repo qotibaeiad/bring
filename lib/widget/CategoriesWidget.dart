@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:bring/class/Item.dart';
 import 'package:bring/main.dart';
+import 'package:bring/screen/categoriesmainscreen.dart';
 import 'package:bring/widget/custom_Container.dart';
 import 'package:flutter/material.dart';
 
@@ -178,7 +179,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
               }
               var length = items.length;
               print("the length $length");
-
+              return CategoriesMain();
+              /*
               return SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -228,6 +230,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                   ],
                 ),
               );
+              */
             },
           ),
         ),

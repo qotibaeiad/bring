@@ -18,7 +18,7 @@ class PopularWidget extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
-                    color: Colors.blue[900]),
+                    color: Colors.blue[500]),
               ),
               Text(
                 'See All',

@@ -1,3 +1,4 @@
+import 'package:bring/screen/Itemscreen.dart';
 import 'package:bring/screen/Verification.dart';
 import 'package:bring/screen/Welcomescreen.dart';
 import 'package:bring/screen/splashscreen.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         'splashscreen': (context) => SplashScreen(),
         'Verification': (context) => Login(),
         'welcomescreen': (context) => welcomescreen(),
+        'itempscreen': (context) => ItemPage(),
       },
     );
   }
@@ -59,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: welcomescreen(),
+      body: SplashScreen(),
     );
   }
 }

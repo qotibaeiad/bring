@@ -1,5 +1,6 @@
 import 'package:bring/class/Item.dart';
 import 'package:bring/main.dart';
+import 'package:bring/screen/categoriesmainscreen.dart';
 import 'package:bring/widget/BottomCartSheet.dart';
 import 'package:bring/widget/CategoriesWidget.dart';
 import 'package:bring/widget/ItemWidget.dart';
@@ -68,7 +69,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             toolbarHeight: MediaQuery.of(context).size.height * 0.07,
             leadingWidth: MediaQuery.of(context).size.width * 0.29,
-            backgroundColor: Colors.blue[900],
+            backgroundColor: Colors.blue[500],
             leading: Container(
               padding: EdgeInsets.only(
                 left: MediaQuery.of(context).size.width * 0.040,
@@ -81,7 +82,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       SideSheet.left(
                           body: Scaffold(
                               appBar: AppBar(
-                                backgroundColor: Colors.blue[900],
+                                backgroundColor: Colors.blue[500],
                               ),
                               body: BottomCartSheet()),
                           context: context);
@@ -117,7 +118,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       SideSheet.right(
                           body: Scaffold(
                               appBar: AppBar(
-                                backgroundColor: Colors.blue[900],
+                                backgroundColor: Colors.blue[500],
                               ),
                               body: BottomCartSheet()),
                           context: context);
@@ -132,7 +133,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ],
           ),
-          backgroundColor: Colors.blue[900],
+          //backgroundColor: Colors.blue[900],
           body: SafeArea(
             child: SingleChildScrollView(
               child: Column(
@@ -149,13 +150,14 @@ class _SplashScreenState extends State<SplashScreen> {
                             "Welcome",
                             style: TextStyle(
                                 fontSize: 35,
-                                color: Colors.white,
+                                color: Colors.blue[500],
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
                         Text(
                           'What do you want to Buy?',
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                          style:
+                              TextStyle(color: Colors.blue[500], fontSize: 20),
                         ),
                       ],
                     ),
@@ -165,17 +167,11 @@ class _SplashScreenState extends State<SplashScreen> {
                   // Products Widgets
                   Container(
                     padding: EdgeInsets.only(top: 20),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                      ),
-                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CategoriesWidget(),
+                        // categoriesmain(),
+                        CategoriesMain(),
                         PopularWidget(),
                         ItemWidget(),
                       ],

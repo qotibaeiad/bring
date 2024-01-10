@@ -21,7 +21,7 @@ class ItemWidget extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
-                    color: Colors.blue[900]),
+                    color: Colors.blue[500]),
               ),
               Text(
                 'See All',
@@ -119,7 +119,7 @@ class ItemWidget extends StatelessWidget {
                               fontSize:
                                   MediaQuery.of(context).size.height * 0.033,
                               fontWeight: FontWeight.bold,
-                              color: Colors.blue[900],
+                              color: Colors.blue[500],
                             ),
                           ),
                           InkWell(
@@ -128,7 +128,7 @@ class ItemWidget extends StatelessWidget {
                               padding: EdgeInsets.all(
                                   MediaQuery.of(context).size.height * 0.013),
                               decoration: BoxDecoration(
-                                color: Colors.blue[900],
+                                color: Colors.blue[500],
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Icon(

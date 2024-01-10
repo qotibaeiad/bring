@@ -53,7 +53,7 @@ class _welcomescreenState extends State<welcomescreen> {
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 19,
-                        color: Colors.blue[900]),
+                        color: Colors.blue[500]),
                   ),
                 ),
                 SizedBox(
@@ -120,7 +120,7 @@ class _welcomescreenState extends State<welcomescreen> {
                       height: 50,
                       width: 100,
                       decoration: BoxDecoration(
-                        color: Colors.blue[900],
+                        color: Colors.blue[500],
                         borderRadius: BorderRadius.circular(90),
                         boxShadow: [BoxShadow(blurRadius: 6, spreadRadius: 1)],
                       ),
