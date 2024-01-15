@@ -1,6 +1,7 @@
 import 'package:bring/screen/Itemscreen.dart';
 import 'package:bring/screen/Verification.dart';
 import 'package:bring/screen/Welcomescreen.dart';
+import 'package:bring/screen/orderhistory.dart';
 import 'package:bring/screen/splashscreen.dart';
 import 'package:flutter/material.dart';
 import 'server/socketserver.dart';
@@ -61,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: welcomescreen(),
+      body: OrderHistory(),
     );
   }
 }
