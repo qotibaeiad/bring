@@ -19,7 +19,7 @@ class BottomBar extends StatelessWidget {
               '\$20',
               style: TextStyle(
                   fontSize: 20,
-                  color: Colors.blue[900],
+                  color: Colors.blue[500],
                   fontWeight: FontWeight.bold),
             ),
             //Creating custom Button
@@ -28,7 +28,7 @@ class BottomBar extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                 decoration: BoxDecoration(
-                  color: Colors.blue[900],
+                  color: Colors.blue[500],
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(

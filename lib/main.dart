@@ -1,3 +1,4 @@
+import 'package:bring/screen/Itemscreen.dart';
 import 'package:bring/screen/Verification.dart';
 import 'package:bring/screen/Welcomescreen.dart';
 import 'package:bring/screen/splashscreen.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         'splashscreen': (context) => SplashScreen(),
         'Verification': (context) => Login(),
         'welcomescreen': (context) => welcomescreen(),
+        'itempscreen': (context) => ItemPage(),
       },
     );
   }
@@ -38,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    socketService = SocketService('10.0.0.41:3000');
+    socketService = SocketService('172.20.10.13:3000');
     socketService.connect();
     socketService.listenForMessages((data) {
       print('Message from the node server: $data');
@@ -59,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: welcomescreen(),
+      body: SplashScreen(),
     );
   }
 }

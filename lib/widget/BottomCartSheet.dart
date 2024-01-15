@@ -66,7 +66,7 @@ class _BottomCartSheetState extends State<BottomCartSheet> {
                               child: Text(
                                 'Item Title',
                                 style: TextStyle(
-                                  color: Colors.blue[900],
+                                  color: Colors.blue[500],
                                   fontSize:
                                       MediaQuery.of(context).size.width * 0.044,
                                   fontWeight: FontWeight.bold,
@@ -78,7 +78,7 @@ class _BottomCartSheetState extends State<BottomCartSheet> {
                               child: Text(
                                 '\$20',
                                 style: TextStyle(
-                                  color: Colors.blue[900],
+                                  color: Colors.blue[500],
                                   fontSize:
                                       MediaQuery.of(context).size.width * 0.044,
                                   fontWeight: FontWeight.bold,

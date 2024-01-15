@@ -2,8 +2,15 @@ import 'package:bring/widget/BottomBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ItemPage extends StatelessWidget {
-  const ItemPage({super.key});
+class ItemPage extends StatefulWidget {
+  const ItemPage({Key? key}) : super(key: key);
+
+  @override
+  _ItemPageState createState() => _ItemPageState();
+}
+
+class _ItemPageState extends State<ItemPage> {
+  String quantity = "1";
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +26,9 @@ class ItemPage extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("images/5.png"),
+                    fit: BoxFit.cover,
+                    image: NetworkImage(
+                        'https://photographer.paulewilliams.com/img-get2/I0000KOB2xgu0Re0/fit=1000x750/g=G0000DfCioCaOdiU/11598-Burger-In-Bun-Photos.jpg'),
                   ),
                 ),
                 child: InkWell(
@@ -29,7 +38,7 @@ class ItemPage extends StatelessWidget {
                   child: Icon(
                     Icons.arrow_back,
                     size: 50,
-                    color: Colors.blue[900],
+                    color: Colors.blue[500],
                   ),
                 ),
               ),
@@ -38,7 +47,7 @@ class ItemPage extends StatelessWidget {
                 margin: EdgeInsets.only(top: 20),
                 padding: EdgeInsets.all(15),
                 decoration: BoxDecoration(
-                  color: Colors.blue[900],
+                  color: Colors.blue[500],
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30),
                     topRight: Radius.circular(30),
@@ -75,14 +84,19 @@ class ItemPage extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                child: Icon(
-                                  CupertinoIcons.minus,
+                                child: InkWell(
+                                  onTap: () {
+                                    updateQuantity(-1);
+                                  },
+                                  child: Icon(
+                                    CupertinoIcons.minus,
+                                  ),
                                 ),
                               ),
                               Container(
                                 margin: EdgeInsets.symmetric(horizontal: 10),
                                 child: Text(
-                                  '01',
+                                  quantity,
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
@@ -104,8 +118,13 @@ class ItemPage extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                child: Icon(
-                                  CupertinoIcons.plus,
+                                child: InkWell(
+                                  onTap: () {
+                                    updateQuantity(1);
+                                  },
+                                  child: Icon(
+                                    CupertinoIcons.plus,
+                                  ),
                                 ),
                               ),
                             ],
@@ -161,7 +180,7 @@ class ItemPage extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          'Delivrey Time',
+                          'Delivery Time',
                           style: TextStyle(
                               fontSize: 19,
                               color: Colors.white,
@@ -193,5 +212,14 @@ class ItemPage extends StatelessWidget {
       ),
       bottomNavigationBar: BottomBar(),
     );
+  }
+
+  void updateQuantity(int change) {
+    setState(() {
+      int newQuantity = int.parse(quantity) + change;
+      if (newQuantity > 0) {
+        quantity = newQuantity.toString();
+      }
+    });
   }
 }
