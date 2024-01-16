@@ -22,6 +22,8 @@ class OrderHistoryCard extends StatelessWidget {
         height: 130,
         width: 320,
         decoration: BoxDecoration(
+          //image: DecorationImage(
+          //   image: AssetImage('images/pizza_cover.jpg'), fit: BoxFit.cover),
           color: Colors.white,
           borderRadius: BorderRadius.circular(30),
           boxShadow: [

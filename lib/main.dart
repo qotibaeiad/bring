@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
         'Verification': (context) => Login(),
         'welcomescreen': (context) => welcomescreen(),
         'itempscreen': (context) => ItemPage(),
+        'orderhistory': (context) => OrderHistory(),
       },
     );
   }
@@ -62,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: OrderHistory(),
+      body: SplashScreen(),
     );
   }
 }
