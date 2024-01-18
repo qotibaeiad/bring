@@ -81,6 +81,9 @@ class _CategoriesMainState extends State<CategoriesMain> {
     final imageUrl = currentItem.url;
     final category = currentItem.category;
     final stars = currentItem.stars;
+    final desc = currentItem.desc;
+    final time = currentItem.time;
+    final location = currentItem.location;
     Matrix4 matrix = new Matrix4.identity();
     if (index == currentPage.floor()) {
       var currScale = 1 - (currentPage - index) * (1 - scaleFactor);
@@ -150,7 +153,7 @@ class _CategoriesMainState extends State<CategoriesMain> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Pizza',
+                        desc,
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.bold),
                       ),
@@ -161,7 +164,7 @@ class _CategoriesMainState extends State<CategoriesMain> {
                         children: [
                           Wrap(
                             children: List.generate(
-                              5,
+                              int.parse(stars),
                               (index) => Icon(
                                 Icons.star,
                                 color: Colors.blue[200],
@@ -172,7 +175,7 @@ class _CategoriesMainState extends State<CategoriesMain> {
                           SizedBox(
                             width: 10,
                           ),
-                          Text('4.5'),
+                          Text(stars),
                         ],
                       ),
                       SizedBox(
@@ -188,7 +191,7 @@ class _CategoriesMainState extends State<CategoriesMain> {
                                 color: Colors.blue[200],
                               ),
                               Text(
-                                "23 min",
+                                time + " min",
                                 style: TextStyle(fontSize: 13),
                               ),
                             ],
@@ -200,7 +203,7 @@ class _CategoriesMainState extends State<CategoriesMain> {
                                 color: Colors.blue[200],
                               ),
                               Text(
-                                "23 min",
+                                location,
                                 style: TextStyle(fontSize: 13),
                               ),
                             ],
@@ -212,7 +215,7 @@ class _CategoriesMainState extends State<CategoriesMain> {
                                 color: Colors.blue[200],
                               ),
                               Text(
-                                "hi",
+                                category,
                                 style: TextStyle(fontSize: 13),
                               ),
                             ],
