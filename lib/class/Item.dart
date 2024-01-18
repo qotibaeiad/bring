@@ -25,16 +25,16 @@ class Item {
 
   factory Item.fromJson(Map<String, dynamic> json) {
     return Item(
-      id: json['_id'] ?? '',
-      url: json['url'] ?? '',
-      desc: json['desc'] ?? '',
-      price: json['price'] ?? '',
-      category: json['category'] ?? '',
-      quant: json['quant'] ?? '',
-      shop: json['shop'] ?? '',
-      time: json['time'] ?? '',
-      location: json['location'] ?? '',
-      stars: json['stars'] ?? '',
+      id: json['_id']?.toString() ?? '', // Convert to string
+      url: json['url']?.toString() ?? '',
+      desc: json['desc']?.toString() ?? '',
+      price: json['price']?.toString() ?? '', // Convert to string
+      category: json['category']?.toString() ?? '',
+      quant: json['quant']?.toString() ?? '', // Convert to string
+      shop: json['shop']?.toString() ?? '',
+      time: json['time']?.toString() ?? '', // Convert to string
+      location: json['location']?.toString() ?? '',
+      stars: json['stars']?.toString() ?? '', // Convert to string
     );
   }
 }

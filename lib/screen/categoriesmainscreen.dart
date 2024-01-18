@@ -32,8 +32,11 @@ class _CategoriesMainState extends State<CategoriesMain> {
       setState(() {
         print(
             "-----------------------------------------------------------------");
-        print(Item.fromJson(data));
-        items.add(data);
+        Item item = Item.fromJson(data);
+        print(item.id);
+        items.add(item); // Add the Item object, not the raw JSON data
+        print(
+            "-----------------------------------------------------------------");
         //print(data);
       });
     });
@@ -209,7 +212,7 @@ class _CategoriesMainState extends State<CategoriesMain> {
                                 color: Colors.blue[200],
                               ),
                               Text(
-                                "23 min",
+                                "hi",
                                 style: TextStyle(fontSize: 13),
                               ),
                             ],
