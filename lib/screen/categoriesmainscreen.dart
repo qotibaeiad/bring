@@ -1,3 +1,5 @@
+import 'package:bring/class/Item.dart';
+import 'package:bring/main.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 
@@ -13,12 +15,29 @@ class _CategoriesMainState extends State<CategoriesMain> {
   var currentPage = 0.0;
   double scaleFactor = 0.8;
   double height = 220;
+
+  List<Item> items = [];
   @override
   void initState() {
     super.initState();
     pageController.addListener(() {
       setState(() {
         currentPage = pageController.page!;
+      });
+    });
+    // Emit the "streamitem" event to request initial data
+    socketService.socket.emit("streamitem");
+    // Listen for "streamitems" event and update the UI
+    socketService.socket.on("streamitems", (data) {
+      setState(() {
+        print(
+            "-----------------------------------------------------------------");
+        Item item = Item.fromJson(data);
+        print(item.id);
+        items.add(item); // Add the Item object, not the raw JSON data
+        print(
+            "-----------------------------------------------------------------");
+        //print(data);
       });
     });
   }
@@ -37,14 +56,14 @@ class _CategoriesMainState extends State<CategoriesMain> {
           height: 350,
           child: PageView.builder(
             controller: pageController,
-            itemCount: 5,
+            itemCount: items.length,
             itemBuilder: (context, position) {
               return _buildCategoryState(position);
             },
           ),
         ),
         new DotsIndicator(
-          dotsCount: 5,
+          dotsCount: items.length == 0 ? 1 : items.length,
           position: currentPage.toInt(),
           decorator: DotsDecorator(
             size: const Size.square(9.0),
@@ -58,6 +77,13 @@ class _CategoriesMainState extends State<CategoriesMain> {
   }
 
   Widget _buildCategoryState(int index) {
+    final currentItem = items[index];
+    final imageUrl = currentItem.url;
+    final category = currentItem.category;
+    final stars = currentItem.stars;
+    final desc = currentItem.desc;
+    final time = currentItem.time;
+    final location = currentItem.location;
     Matrix4 matrix = new Matrix4.identity();
     if (index == currentPage.floor()) {
       var currScale = 1 - (currentPage - index) * (1 - scaleFactor);
@@ -92,7 +118,7 @@ class _CategoriesMainState extends State<CategoriesMain> {
               padding: EdgeInsets.only(left: 40, right: 50),
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("images/pizza_cover.jpg"),
+                    image: AssetImage('images/pizza_cover.jpg'),
                     fit: BoxFit.cover),
                 boxShadow: [
                   BoxShadow(
@@ -128,7 +154,7 @@ class _CategoriesMainState extends State<CategoriesMain> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Pizza',
+                        desc,
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.bold),
                       ),
@@ -139,7 +165,7 @@ class _CategoriesMainState extends State<CategoriesMain> {
                         children: [
                           Wrap(
                             children: List.generate(
-                              5,
+                              int.parse(stars),
                               (index) => Icon(
                                 Icons.star,
                                 color: Colors.blue[200],
@@ -150,7 +176,7 @@ class _CategoriesMainState extends State<CategoriesMain> {
                           SizedBox(
                             width: 10,
                           ),
-                          Text('4.5'),
+                          Text(stars),
                         ],
                       ),
                       SizedBox(
@@ -166,7 +192,7 @@ class _CategoriesMainState extends State<CategoriesMain> {
                                 color: Colors.blue[200],
                               ),
                               Text(
-                                "23 min",
+                                time + " min",
                                 style: TextStyle(fontSize: 13),
                               ),
                             ],
@@ -178,7 +204,7 @@ class _CategoriesMainState extends State<CategoriesMain> {
                                 color: Colors.blue[200],
                               ),
                               Text(
-                                "23 min",
+                                location,
                                 style: TextStyle(fontSize: 13),
                               ),
                             ],
@@ -190,7 +216,7 @@ class _CategoriesMainState extends State<CategoriesMain> {
                                 color: Colors.blue[200],
                               ),
                               Text(
-                                "23 min",
+                                category,
                                 style: TextStyle(fontSize: 13),
                               ),
                             ],

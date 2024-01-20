@@ -1,50 +1,40 @@
 class Item {
-  late String id;
-  late String url;
-  late String desc;
-  late String price;
-  late String category;
-  late String quant;
-  late String shop;
+  final String id;
+  final String url;
+  final String desc;
+  final String price;
+  final String category;
+  final String quant;
+  final String shop;
+  final String time;
+  final String location;
+  final String stars;
 
-  // Public constructor
-  Item();
+  Item({
+    required this.id,
+    required this.url,
+    required this.desc,
+    required this.price,
+    required this.category,
+    required this.quant,
+    required this.shop,
+    required this.time,
+    required this.location,
+    required this.stars,
+  });
 
-  // Factory constructor to create an Item object from JSON
   factory Item.fromJson(Map<String, dynamic> json) {
-    Item item = Item();
-    item.id = json['_id'] ?? ''; // Add null check and provide a default value
-    item.url = json['url'] ?? '';
-    item.desc = json['desc'] ?? '';
-    item.price = json['price'] ?? '';
-    item.category = json['category'] ?? '';
-    item.quant = json['quant'] ?? '';
-    item.shop = json['shop'] ?? '';
-    return item;
-  }
-
-  // Method to set item data
-  void setItemData(String id, String url, String desc, String price,
-      String category, String quant, String shop) {
-    this.id = id;
-    this.url = url;
-    this.desc = desc;
-    this.price = price;
-    this.category = category;
-    this.quant = quant;
-    this.shop = shop;
-  }
-
-  // Method to convert the item to JSON
-  Map<String, dynamic> toJson() {
-    return {
-      '_id': id,
-      'url': url,
-      'desc': desc,
-      'price': price,
-      'category': category,
-      'quant': quant,
-      'shop': shop,
-    };
+    return Item(
+      id: json['_id']?.toString() ?? '', // Convert to string
+      url: json['url']?.toString() ?? '',
+      desc: json['desc']?.toString() ?? '',
+      price: json['price']?.toString() ?? '', // Convert to string
+      category: json['category']?.toString() ?? '',
+      quant: json['quant']?.toString() ?? '', // Convert to string
+      shop: json['shop']?.toString() ?? '',
+      time: json['time']?.toString() ?? '', // Convert to string
+      location: json['location']?.toString() ?? '',
+      stars: json['stars']?.toString() ?? '', // Convert to string
+    );
   }
 }
