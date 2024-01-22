@@ -94,13 +94,13 @@ class ItemWidget extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).size.height * 0.0001),
+                          bottom: Dimension.screenHeight(context) * 0.0001),
                       child: Container(
                         alignment: Alignment.centerLeft,
                         child: Text(
                           'Sweet Pizza',
                           style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * 0.04,
+                            fontSize: Dimension.defaultFontSize * 1.1,
                             fontWeight: FontWeight.bold,
                             color: Colors.black54,
                           ),
@@ -109,7 +109,7 @@ class ItemWidget extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                        top: MediaQuery.of(context).size.height * 0.009,
+                        top: Dimension.screenHeight(context) * 0.009,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -117,8 +117,7 @@ class ItemWidget extends StatelessWidget {
                           Text(
                             "\$10",
                             style: TextStyle(
-                              fontSize:
-                                  MediaQuery.of(context).size.height * 0.033,
+                              fontSize: Dimension.screenHeight(context) * 0.033,
                               fontWeight: FontWeight.bold,
                               color: Colors.blue[500],
                             ),
@@ -127,7 +126,7 @@ class ItemWidget extends StatelessWidget {
                             onTap: () {},
                             child: Container(
                               padding: EdgeInsets.all(
-                                  MediaQuery.of(context).size.height * 0.013),
+                                  Dimension.screenHeight(context) * 0.013),
                               decoration: BoxDecoration(
                                 color: Colors.blue[500],
                                 borderRadius: BorderRadius.circular(10),
@@ -135,7 +134,7 @@ class ItemWidget extends StatelessWidget {
                               child: Icon(
                                 Icons.add_shopping_cart,
                                 color: Colors.white,
-                                size: MediaQuery.of(context).size.height * 0.01,
+                                size: Dimension.screenHeight(context) * 0.01,
                               ),
                             ),
                           ),
