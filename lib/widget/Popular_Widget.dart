@@ -1,3 +1,4 @@
+import 'package:bring/class/Dimension.dart';
 import 'package:bring/widget/custom_Container.dart';
 import 'package:flutter/material.dart';
 
@@ -16,14 +17,14 @@ class PopularWidget extends StatelessWidget {
               Text(
                 'Popular',
                 style: TextStyle(
-                    fontSize: 25,
+                    fontSize: Dimension.defaultFontSize * 2,
                     fontWeight: FontWeight.bold,
                     color: Colors.blue[500]),
               ),
               Text(
                 'See All',
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: Dimension.defaultFontSize * 0.9,
                   fontWeight: FontWeight.bold,
                   color: Colors.black54,
                 ),
@@ -39,7 +40,7 @@ class PopularWidget extends StatelessWidget {
               for (int i = 0; i < 8; i++)
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  height: 100,
+                  height: Dimension.screenHeight(context) * 0.11,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: Colors.white,
@@ -58,7 +59,7 @@ class PopularWidget extends StatelessWidget {
                               'https://photographer.paulewilliams.com/img-get2/I0000KOB2xgu0Re0/fit=1000x750/g=G0000DfCioCaOdiU/11598-Burger-In-Bun-Photos.jpg',
                           radius: 20,
                           elevation: 10,
-                          width: 50,
+                          width: Dimension.screenWidth(context) * 0.11,
                           height: 50,
                         ),
                       ),
@@ -67,7 +68,7 @@ class PopularWidget extends StatelessWidget {
                         child: Text(
                           'Category',
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: Dimension.defaultFontSize * 0.9,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

@@ -1,3 +1,4 @@
+import 'package:bring/class/Dimension.dart';
 import 'package:bring/class/Item.dart';
 import 'package:bring/screen/categoriesmainscreen.dart';
 import 'package:bring/screen/orderhistory.dart';
@@ -61,11 +62,11 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Row(
                   children: [
                     SizedBox(
-                      width: 0,
+                      width: Dimension.screenWidth(context) * 0.02,
                     ),
                     Icon(
                       Icons.search,
-                      size: 25,
+                      size: Dimension.defaultFontSize * 1.3,
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width * 0.5,
@@ -101,7 +102,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     children: [
                       Icon(
                         Icons.person,
-                        size: 40,
+                        size: Dimension.defaultFontSize * 3,
                         color: Colors.white,
                       ),
                       Padding(
@@ -110,7 +111,7 @@ class _SplashScreenState extends State<SplashScreen> {
                           'Information',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 24,
+                            fontSize: Dimension.defaultFontSize * 2,
                           ),
                         ),
                       ),
@@ -159,15 +160,16 @@ class _SplashScreenState extends State<SplashScreen> {
                           child: Text(
                             "Welcome",
                             style: TextStyle(
-                                fontSize: 35,
+                                fontSize: Dimension.defaultFontSize * 1.7,
                                 color: Colors.blue[500],
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
                         Text(
                           'What do you want to Buy?',
-                          style:
-                              TextStyle(color: Colors.blue[500], fontSize: 20),
+                          style: TextStyle(
+                              color: Colors.blue[500],
+                              fontSize: Dimension.defaultFontSize * 1.2),
                         ),
                       ],
                     ),

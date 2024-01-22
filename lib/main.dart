@@ -1,3 +1,4 @@
+import 'package:bring/class/Dimension.dart';
 import 'package:bring/screen/Itemscreen.dart';
 import 'package:bring/screen/Verification.dart';
 import 'package:bring/screen/Welcomescreen.dart';
@@ -42,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    socketService = SocketService('192.168.14.7:3000');
+    socketService = SocketService('172.20.10.13:3000');
     socketService.connect();
     socketService.listenForMessages((data) {
       print('Message from the node server: $data');

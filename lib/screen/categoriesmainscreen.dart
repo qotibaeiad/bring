@@ -1,3 +1,4 @@
+import 'package:bring/class/Dimension.dart';
 import 'package:bring/class/Item.dart';
 import 'package:bring/main.dart';
 import 'package:dots_indicator/dots_indicator.dart';
@@ -53,7 +54,7 @@ class _CategoriesMainState extends State<CategoriesMain> {
     return Column(
       children: [
         SizedBox(
-          height: 350,
+          height: Dimension.screenHeight(context) * 0.37,
           child: PageView.builder(
             controller: pageController,
             itemCount: items.length,
@@ -77,6 +78,7 @@ class _CategoriesMainState extends State<CategoriesMain> {
   }
 
   Widget _buildCategoryState(int index) {
+    final double width = Dimension.screenWidth(context);
     final currentItem = items[index];
     final imageUrl = currentItem.url;
     final category = currentItem.category;
@@ -135,8 +137,8 @@ class _CategoriesMainState extends State<CategoriesMain> {
             child: Padding(
               padding: EdgeInsets.all(40),
               child: Container(
-                height: 130,
-                width: 320,
+                height: Dimension.screenHeight(context) * 0.19,
+                width: Dimension.screenWidth(context) * 0.7,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(30),
@@ -169,18 +171,18 @@ class _CategoriesMainState extends State<CategoriesMain> {
                               (index) => Icon(
                                 Icons.star,
                                 color: Colors.blue[200],
-                                size: 17,
+                                size: Dimension.screenWidth(context) * 0.05,
                               ),
                             ),
                           ),
                           SizedBox(
-                            width: 10,
+                            width: Dimension.screenWidth(context) * 0.02,
                           ),
                           Text(stars),
                         ],
                       ),
                       SizedBox(
-                        height: 27,
+                        height: Dimension.screenHeight(context) * 0.001,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -193,7 +195,8 @@ class _CategoriesMainState extends State<CategoriesMain> {
                               ),
                               Text(
                                 time + " min",
-                                style: TextStyle(fontSize: 13),
+                                style: TextStyle(
+                                    fontSize: Dimension.defaultFontSize * 0.7),
                               ),
                             ],
                           ),
@@ -205,7 +208,8 @@ class _CategoriesMainState extends State<CategoriesMain> {
                               ),
                               Text(
                                 location,
-                                style: TextStyle(fontSize: 13),
+                                style: TextStyle(
+                                    fontSize: Dimension.defaultFontSize * 0.7),
                               ),
                             ],
                           ),
@@ -217,7 +221,8 @@ class _CategoriesMainState extends State<CategoriesMain> {
                               ),
                               Text(
                                 category,
-                                style: TextStyle(fontSize: 13),
+                                style: TextStyle(
+                                    fontSize: Dimension.defaultFontSize * 0.71),
                               ),
                             ],
                           ),

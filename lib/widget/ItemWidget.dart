@@ -1,3 +1,4 @@
+import 'package:bring/class/Dimension.dart';
 import 'package:flutter/material.dart';
 
 class ItemWidget extends StatelessWidget {
@@ -19,14 +20,14 @@ class ItemWidget extends StatelessWidget {
               Text(
                 'Top',
                 style: TextStyle(
-                    fontSize: 25,
+                    fontSize: Dimension.defaultFontSize * 2,
                     fontWeight: FontWeight.bold,
                     color: Colors.blue[500]),
               ),
               Text(
                 'See All',
                 style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * 0.045,
+                  fontSize: Dimension.defaultFontSize * 0.9,
                   fontWeight: FontWeight.bold,
                   color: Colors.black54,
                 ),
@@ -36,10 +37,10 @@ class ItemWidget extends StatelessWidget {
         ),
         GridView.count(
           padding: EdgeInsets.symmetric(
-              vertical: MediaQuery.of(context).size.height * 0.040,
-              horizontal: MediaQuery.of(context).size.width * 0.040),
-          crossAxisSpacing: MediaQuery.of(context).size.width * 0.040,
-          mainAxisSpacing: MediaQuery.of(context).size.width * 0.040,
+              vertical: Dimension.screenHeight(context) * 0.04,
+              horizontal: Dimension.screenWidth(context) * 0.04),
+          crossAxisSpacing: Dimension.screenWidth(context) * 0.04,
+          mainAxisSpacing: Dimension.screenWidth(context) * 0.04,
           physics: NeverScrollableScrollPhysics(),
           crossAxisCount: 2,
           childAspectRatio: 0.8,
@@ -48,7 +49,7 @@ class ItemWidget extends StatelessWidget {
             for (int i = 0; i < 8; i++)
               Container(
                 padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width * 0.030),
+                    horizontal: Dimension.screenWidth(context) * 0.030),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -71,20 +72,20 @@ class ItemWidget extends StatelessWidget {
                         //   bottom: MediaQuery.of(context).size.width * 0.0001),
                         child: Image.network(
                           'https://photographer.paulewilliams.com/img-get2/I0000KOB2xgu0Re0/fit=1000x750/g=G0000DfCioCaOdiU/11598-Burger-In-Bun-Photos.jpg',
-                          height: MediaQuery.of(context).size.height * 0.15,
-                          width: MediaQuery.of(context).size.width * 0.30,
+                          height: Dimension.screenHeight(context) * 0.15,
+                          width: Dimension.screenWidth(context) * 0.30,
                         ),
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).size.height * 0.012),
+                          bottom: Dimension.screenHeight(context) * 0.012),
                       child: Container(
                         alignment: Alignment.centerLeft,
                         child: Text(
                           'Item title',
                           style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * 0.035,
+                            fontSize: Dimension.defaultFontSize * 0.035,
                             fontWeight: FontWeight.bold,
                             color: Colors.black87,
                           ),
