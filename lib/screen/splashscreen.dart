@@ -102,17 +102,15 @@ class _SplashScreenState extends State<SplashScreen> {
                     children: [
                       Icon(
                         Icons.person,
-                        size: Dimension.defaultFontSize * 3,
+                        size: Dimension.getResponsiveFontSize(context) * 3.5,
                         color: Colors.white,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          'Information',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: Dimension.defaultFontSize * 2,
-                          ),
+                      Text(
+                        'Information',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize:
+                              Dimension.getResponsiveFontSize(context) * 2,
                         ),
                       ),
                     ],

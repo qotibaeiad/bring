@@ -1,9 +1,14 @@
 import 'package:bring/class/Dimension.dart';
 import 'package:flutter/material.dart';
 
-class ItemWidget extends StatelessWidget {
+class ItemWidget extends StatefulWidget {
   const ItemWidget({super.key});
 
+  @override
+  State<ItemWidget> createState() => _ItemWidgetState();
+}
+
+class _ItemWidgetState extends State<ItemWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,7 +25,7 @@ class ItemWidget extends StatelessWidget {
               Text(
                 'Top',
                 style: TextStyle(
-                    fontSize: Dimension.defaultFontSize * 2,
+                    fontSize: Dimension.getResponsiveFontSize(context) * 2,
                     fontWeight: FontWeight.bold,
                     color: Colors.blue[500]),
               ),
@@ -62,6 +67,7 @@ class ItemWidget extends StatelessWidget {
                   ],
                 ),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     InkWell(
                       onTap: () {
@@ -107,39 +113,35 @@ class ItemWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: Dimension.screenHeight(context) * 0.009,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "\$10",
-                            style: TextStyle(
-                              fontSize: Dimension.screenHeight(context) * 0.033,
-                              fontWeight: FontWeight.bold,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "\$10",
+                          style: TextStyle(
+                            fontSize:
+                                Dimension.getResponsiveFontSize(context) * 1.2,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue[500],
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {},
+                          child: Container(
+                            padding: EdgeInsets.all(
+                                Dimension.getResponsivePadding(context) * 0.4),
+                            decoration: BoxDecoration(
                               color: Colors.blue[500],
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Icon(
+                              Icons.add_shopping_cart,
+                              color: Colors.white,
+                              size: Dimension.getResponsiveFontSize(context),
                             ),
                           ),
-                          InkWell(
-                            onTap: () {},
-                            child: Container(
-                              padding: EdgeInsets.all(
-                                  Dimension.screenHeight(context) * 0.013),
-                              decoration: BoxDecoration(
-                                color: Colors.blue[500],
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Icon(
-                                Icons.add_shopping_cart,
-                                color: Colors.white,
-                                size: Dimension.screenHeight(context) * 0.01,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
