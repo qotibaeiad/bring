@@ -1,45 +1,20 @@
 import 'package:bring/class/Dimension.dart';
-import 'package:bring/class/Item.dart';
 import 'package:bring/screen/categoriesmainscreen.dart';
-import 'package:bring/screen/orderhistory.dart';
 import 'package:bring/widget/ItemWidget.dart';
 import 'package:bring/widget/Popular_Widget.dart';
 import 'package:bring/widget/TotalPrice.dart';
 import 'package:flutter/material.dart';
 
-List<Item> listItem = [];
-
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class mainpage extends StatefulWidget {
+  const mainpage({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<mainpage> createState() => _mainpageState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
-  int pagenum = 0;
-  void updateindex(int index) {
-    setState(() {
-      pagenum = index;
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
+class _mainpageState extends State<mainpage> {
   @override
   Widget build(BuildContext context) {
-    switch (pagenum) {
-      case 0:
-        return mainpage(context);
-      default:
-        return TotalPrice();
-    }
-  }
-
-  Widget mainpage(BuildContext context) {
     return Stack(
       children: [
         Scaffold(
@@ -116,9 +91,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
                 ListTile(
                   title: Text('Account'),
-                  onTap: () {
-                    Navigator.pushNamed(context, 'mainpage');
-                  },
+                  onTap: () {},
                 ),
                 Divider(
                   color: Colors.black, // Set the color of the line

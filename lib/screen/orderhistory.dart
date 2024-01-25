@@ -1,6 +1,5 @@
 import 'package:bring/widget/orderhistorycard.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class OrderHistory extends StatefulWidget {
   const OrderHistory({super.key});
@@ -19,12 +18,10 @@ class _OrderHistoryState extends State<OrderHistory> {
           width: MediaQuery.of(context).size.width,
           child: Padding(
             padding: const EdgeInsets.only(top: 30, left: 8),
-            child: Text(
-              'Order\nHistory',
-              style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-            ),
           ),
           decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('images/orderhistory.jpg'), fit: BoxFit.fill),
             color: Colors.blue[400],
             borderRadius: BorderRadius.circular(30),
             boxShadow: [

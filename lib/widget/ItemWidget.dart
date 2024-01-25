@@ -9,16 +9,27 @@ class ItemWidget extends StatefulWidget {
 }
 
 class _ItemWidgetState extends State<ItemWidget> {
+  final List<String> items = [
+    'Item 1',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+    'Item 6',
+    'Item 7',
+  ];
+  //PageController pageController = PageController(viewportFraction: 0.9);
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Padding(
           padding: EdgeInsets.only(
-              left: MediaQuery.of(context).size.width * 0.046,
-              right: MediaQuery.of(context).size.width * 0.040,
-              bottom: MediaQuery.of(context).size.height * 0.01,
-              top: MediaQuery.of(context).size.height * 0.01),
+              left: Dimension.screenWidth(context) * 0.046,
+              right: Dimension.screenWidth(context) * 0.040,
+              bottom: Dimension.screenHeight(context) * 0.01,
+              top: Dimension.screenHeight(context) * 0.01),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -40,115 +51,110 @@ class _ItemWidgetState extends State<ItemWidget> {
             ],
           ),
         ),
-        GridView.count(
-          padding: EdgeInsets.symmetric(
-              vertical: Dimension.screenHeight(context) * 0.04,
-              horizontal: Dimension.screenWidth(context) * 0.04),
-          crossAxisSpacing: Dimension.screenWidth(context) * 0.04,
-          mainAxisSpacing: Dimension.screenWidth(context) * 0.04,
+        GridView.builder(
           physics: NeverScrollableScrollPhysics(),
-          crossAxisCount: 2,
-          childAspectRatio: 0.8,
           shrinkWrap: true,
-          children: [
-            for (int i = 0; i < 8; i++)
-              Container(
-                padding: EdgeInsets.symmetric(
-                    horizontal: Dimension.screenWidth(context) * 0.030),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 4,
-                    ),
-                  ],
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, 'itempscreen');
-                      },
-                      child: Container(
-                        // margin: EdgeInsets.only(
-                        //   bottom: MediaQuery.of(context).size.width * 0.0001),
-                        child: Image.network(
-                          'https://photographer.paulewilliams.com/img-get2/I0000KOB2xgu0Re0/fit=1000x750/g=G0000DfCioCaOdiU/11598-Burger-In-Bun-Photos.jpg',
-                          height: Dimension.screenHeight(context) * 0.15,
-                          width: Dimension.screenWidth(context) * 0.30,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          bottom: Dimension.screenHeight(context) * 0.012),
-                      child: Container(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          'Item title',
-                          style: TextStyle(
-                            fontSize: Dimension.defaultFontSize * 0.035,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black87,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          bottom: Dimension.screenHeight(context) * 0.0001),
-                      child: Container(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          'Sweet Pizza',
-                          style: TextStyle(
-                            fontSize: Dimension.defaultFontSize * 1.1,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black54,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "\$10",
-                          style: TextStyle(
-                            fontSize:
-                                Dimension.getResponsiveFontSize(context) * 1.2,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue[500],
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {},
-                          child: Container(
-                            padding: EdgeInsets.all(
-                                Dimension.getResponsivePadding(context) * 0.4),
-                            decoration: BoxDecoration(
-                              color: Colors.blue[500],
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Icon(
-                              Icons.add_shopping_cart,
-                              color: Colors.white,
-                              size: Dimension.getResponsiveFontSize(context),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, // Number of columns in the grid
+            crossAxisSpacing: 12,
+            mainAxisSpacing: 12,
+          ),
+          padding: EdgeInsets.symmetric(
+            vertical: Dimension.screenHeight(context) * 0.04,
+            horizontal: Dimension.screenWidth(context) * 0.04,
+          ),
+          itemCount: items.length,
+          itemBuilder: (BuildContext context, int index) {
+            return topfood(context, index);
+          },
+        )
+      ],
+    );
+  }
+
+  Container topfood(BuildContext context, int index) {
+    return Container(
+      padding: EdgeInsets.symmetric(
+          horizontal: Dimension.screenWidth(context) * 0.030),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 1,
+            blurRadius: 4,
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, 'itempscreen');
+            },
+            child: Container(
+              // margin: EdgeInsets.only(
+              //   bottom: MediaQuery.of(context).size.width * 0.0001),
+              child: Image.network(
+                'https://photographer.paulewilliams.com/img-get2/I0000KOB2xgu0Re0/fit=1000x750/g=G0000DfCioCaOdiU/11598-Burger-In-Bun-Photos.jpg',
+                height: Dimension.screenHeight(context) * 0.15,
+                width: Dimension.screenWidth(context) * 0.30,
+              ),
+            ),
+          ),
+          Container(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Item title',
+              style: TextStyle(
+                fontSize: Dimension.defaultFontSize * 0.035,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
+            ),
+          ),
+          Container(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Sweet Pizza',
+              style: TextStyle(
+                fontSize: Dimension.getResponsiveFontSize(context),
+                fontWeight: FontWeight.bold,
+                color: Colors.black54,
+              ),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "\$10",
+                style: TextStyle(
+                  fontSize: Dimension.getResponsiveFontSize(context) * 1.2,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue[500],
                 ),
               ),
-          ],
-        ),
-      ],
+              InkWell(
+                onTap: () {},
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.blue[500],
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Icon(
+                    Icons.add_shopping_cart,
+                    color: Colors.white,
+                    size: Dimension.getResponsiveFontSize(context),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

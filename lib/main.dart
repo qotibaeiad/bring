@@ -1,4 +1,3 @@
-import 'package:bring/class/Dimension.dart';
 import 'package:bring/screen/Itemscreen.dart';
 import 'package:bring/screen/Verification.dart';
 import 'package:bring/screen/Welcomescreen.dart';
@@ -27,6 +26,7 @@ class MyApp extends StatelessWidget {
         'welcomescreen': (context) => welcomescreen(),
         'itempscreen': (context) => ItemPage(),
         'orderhistory': (context) => OrderHistory(),
+        // 'mainpage': (context) => mainpage(),
       },
     );
   }
