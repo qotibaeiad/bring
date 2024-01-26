@@ -1,3 +1,4 @@
+import 'package:bring/class/Dimension.dart';
 import 'package:flutter/material.dart';
 
 class OrderHistoryCard extends StatelessWidget {
@@ -19,18 +20,15 @@ class OrderHistoryCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: Container(
-        height: 130,
-        width: 320,
+        height: Dimension.screenHeight(context) * 0.18,
+        width: Dimension.screenWidth(context) * 0.8,
         decoration: BoxDecoration(
-          //image: DecorationImage(
-          //   image: AssetImage('images/pizza_cover.jpg'), fit: BoxFit.cover),
           color: Colors.white,
           borderRadius: BorderRadius.circular(30),
           boxShadow: [
             BoxShadow(
-              blurRadius: 5,
-              offset: Offset(0, 5),
-              color: Colors.grey,
+              blurRadius: 4,
+              color: Colors.black,
             ),
           ],
         ),
@@ -42,10 +40,13 @@ class OrderHistoryCard extends StatelessWidget {
             children: [
               Text(
                 this.name,
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: Colors.blue[200],
+                    fontSize: Dimension.defaultFontSize * 0.9,
+                    fontWeight: FontWeight.bold),
               ),
               SizedBox(
-                height: 10,
+                height: Dimension.screenHeight(context) * 0.01,
               ),
               Row(
                 children: [
@@ -55,18 +56,24 @@ class OrderHistoryCard extends StatelessWidget {
                       (index) => Icon(
                         Icons.star,
                         color: Colors.blue[200],
-                        size: 17,
+                        size: Dimension.getResponsiveFontSize(context) * 0.9,
                       ),
                     ),
                   ),
                   SizedBox(
-                    width: 10,
+                    width: Dimension.screenWidth(context) * 0.01,
                   ),
-                  Text('4.5'),
+                  Text(
+                    '4.5',
+                    style: TextStyle(
+                        color: Colors.blue[200],
+                        fontSize:
+                            Dimension.getResponsiveFontSize(context) * 1.3),
+                  ),
                 ],
               ),
               SizedBox(
-                height: 27,
+                height: Dimension.screenHeight(context) * 0.01,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,11 +82,14 @@ class OrderHistoryCard extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.timer_sharp,
+                        size: Dimension.getResponsiveFontSize(context) * 1.4,
                         color: Colors.blue[200],
                       ),
                       Text(
                         this.time,
-                        style: TextStyle(fontSize: 13),
+                        style: TextStyle(
+                            color: Colors.blue[200],
+                            fontSize: Dimension.getResponsiveFontSize(context)),
                       ),
                     ],
                   ),
@@ -87,11 +97,14 @@ class OrderHistoryCard extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.location_on_outlined,
+                        size: Dimension.getResponsiveFontSize(context) * 1.4,
                         color: Colors.blue[200],
                       ),
                       Text(
                         this.date,
-                        style: TextStyle(fontSize: 13),
+                        style: TextStyle(
+                            color: Colors.blue[200],
+                            fontSize: Dimension.getResponsiveFontSize(context)),
                       ),
                     ],
                   ),
@@ -99,11 +112,14 @@ class OrderHistoryCard extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.circle,
+                        size: Dimension.getResponsiveFontSize(context) * 1.4,
                         color: Colors.blue[200],
                       ),
                       Text(
                         "23 min",
-                        style: TextStyle(fontSize: 13),
+                        style: TextStyle(
+                            color: Colors.blue[200],
+                            fontSize: Dimension.getResponsiveFontSize(context)),
                       ),
                     ],
                   ),

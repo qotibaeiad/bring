@@ -31,15 +31,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    switch (pagenum) {
-      case 0:
-        return mainpage(context);
-      default:
-        return TotalPrice();
-    }
-  }
-
-  Widget mainpage(BuildContext context) {
     return Stack(
       children: [
         Scaffold(
