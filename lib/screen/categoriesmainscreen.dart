@@ -78,7 +78,6 @@ class _CategoriesMainState extends State<CategoriesMain> {
   }
 
   Widget _buildCategoryState(int index) {
-    final double width = Dimension.screenWidth(context);
     final currentItem = items[index];
     final imageUrl = currentItem.url;
     final category = currentItem.category;
@@ -117,7 +116,6 @@ class _CategoriesMainState extends State<CategoriesMain> {
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10, bottom: 70),
             child: Container(
-              padding: EdgeInsets.only(left: 40, right: 50),
               decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('images/pizza_cover.jpg'),
@@ -135,10 +133,10 @@ class _CategoriesMainState extends State<CategoriesMain> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: EdgeInsets.all(40),
+              padding: EdgeInsets.all(30),
               child: Container(
                 height: Dimension.screenHeight(context) * 0.19,
-                width: Dimension.screenWidth(context) * 0.7,
+                width: Dimension.screenWidth(context) * 0.8,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(30),

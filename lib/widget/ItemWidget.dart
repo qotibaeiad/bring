@@ -83,20 +83,18 @@ class _ItemWidgetState extends State<ItemWidget> {
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 1,
-            blurRadius: 4,
+            blurRadius: 6,
           ),
         ],
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           InkWell(
             onTap: () {
               Navigator.pushNamed(context, 'itempscreen');
             },
             child: Container(
-              // margin: EdgeInsets.only(
-              //   bottom: MediaQuery.of(context).size.width * 0.0001),
               child: Image.network(
                 'https://photographer.paulewilliams.com/img-get2/I0000KOB2xgu0Re0/fit=1000x750/g=G0000DfCioCaOdiU/11598-Burger-In-Bun-Photos.jpg',
                 height: Dimension.screenHeight(context) * 0.15,
@@ -120,38 +118,35 @@ class _ItemWidgetState extends State<ItemWidget> {
             child: Text(
               'Sweet Pizza',
               style: TextStyle(
-                fontSize: Dimension.getResponsiveFontSize(context),
+                fontSize: Dimension.getResponsiveFontSize(context) * 0.8,
                 fontWeight: FontWeight.bold,
                 color: Colors.black54,
               ),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "\$10",
-                style: TextStyle(
-                  fontSize: Dimension.getResponsiveFontSize(context) * 1.2,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue[500],
-                ),
-              ),
-              InkWell(
-                onTap: () {},
-                child: Container(
-                  decoration: BoxDecoration(
+          Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "\$10",
+                  style: TextStyle(
+                    fontSize: Dimension.getResponsiveFontSize(context) * 0.8,
+                    fontWeight: FontWeight.bold,
                     color: Colors.blue[500],
-                    borderRadius: BorderRadius.circular(10),
                   ),
+                ),
+                InkWell(
+                  onTap: () {},
                   child: Icon(
                     Icons.add_shopping_cart,
-                    color: Colors.white,
+                    color: Colors.blue,
                     size: Dimension.getResponsiveFontSize(context),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),

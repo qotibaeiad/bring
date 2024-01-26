@@ -13,11 +13,22 @@ class _OrderHistoryState extends State<OrderHistory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomSheet: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Icon(Icons.home),
+            Icon(Icons.next_plan),
+            Icon(Icons.backspace_rounded),
+          ],
+        ),
+      ),
       backgroundColor: Colors.white,
       body: Stack(
         children: [
           Container(
-            height: 300,
+            height: Dimension.screenHeight(context) * 0.8,
             width: MediaQuery.of(context).size.width,
             child: Padding(
               padding: const EdgeInsets.only(top: 30, left: 8),
