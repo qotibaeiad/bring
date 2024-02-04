@@ -1,4 +1,6 @@
 import 'package:bring/class/Dimension.dart';
+import 'package:bring/class/Item.dart';
+import 'package:bring/main.dart';
 import 'package:flutter/material.dart';
 
 class ItemWidget extends StatefulWidget {
@@ -9,15 +11,88 @@ class ItemWidget extends StatefulWidget {
 }
 
 class _ItemWidgetState extends State<ItemWidget> {
-  final List<String> items = [
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
-    'Item 6',
-    'Item 7',
-  ];
+  List<Item> items = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Emit the "streamitem" event to request initial data
+    socketService.socket.emit("streamitemtopdown");
+    // Listen for "streamitems" event and update the UI
+    socketService.socket.on("streamtopdownitems", (data) {
+      setState(() {
+        print(
+            "-----------------------------------------------------------------");
+        Item item = Item.fromJson(data);
+        print(item.id);
+        items.add(item); // Add the Item object, not the raw JSON data
+        print(
+            "-----------------------------------------------------------------");
+        //print(data);
+      });
+    });
+
+    socketService.socket.on("insertItem", (data) {
+      setState(() {
+        print(
+            "-----------------------------------------------------------------");
+        Item item = Item.fromJson(data);
+        print(item.id);
+        items.add(item); // Add the Item object, not the raw JSON data
+        print(
+            "-----------------------------------------------------------------");
+        //print(data);
+      });
+    });
+
+    socketService.socket.on("deleteItem", (data) {
+      setState(() {
+        // Extract the id from the data received from the server
+        String itemId = data;
+
+        // Find the index of the item with the matching id
+        int index = items.indexWhere((item) => item.id == itemId);
+
+        // Check if the item with the given id exists in the list
+        if (index != -1) {
+          // Remove the item from the list
+          items.removeAt(index);
+          print('Item with id deleted: $itemId');
+        }
+      });
+    });
+
+    socketService.socket.on("updateItem", (data) {
+      setState(() {
+        int index = -1;
+        print(
+            "-----------------------------------------------------------------");
+        String itemId = data[1].toString();
+        for (var entry in data[1].entries) {
+          index = items.indexWhere((item) => item.id == entry.value);
+          print(index);
+        }
+        print(index);
+        if (index != -1) {
+          // Iterate through the updated fields and update the item
+          for (var entry in data[3].entries) {
+            final fieldName = entry.key;
+            final fieldValue = entry.value;
+
+            // Update the field in the item
+            items[index].updateField(fieldName, fieldValue);
+
+            print('Field: $fieldName, Value: $fieldValue');
+          }
+
+          print('Item updated: $itemId');
+        }
+        print(
+            "-----------------------------------------------------------------");
+      });
+    });
+  }
   //PageController pageController = PageController(viewportFraction: 0.9);
 
   @override
@@ -105,7 +180,7 @@ class _ItemWidgetState extends State<ItemWidget> {
           Container(
             alignment: Alignment.centerLeft,
             child: Text(
-              'Item title',
+              items[index].desc,
               style: TextStyle(
                 fontSize: Dimension.defaultFontSize * 0.035,
                 fontWeight: FontWeight.bold,
@@ -116,7 +191,7 @@ class _ItemWidgetState extends State<ItemWidget> {
           Container(
             alignment: Alignment.centerLeft,
             child: Text(
-              'Sweet Pizza',
+              items[index].desc,
               style: TextStyle(
                 fontSize: Dimension.getResponsiveFontSize(context) * 0.8,
                 fontWeight: FontWeight.bold,
@@ -130,7 +205,7 @@ class _ItemWidgetState extends State<ItemWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "\$10",
+                  "\$" + items[index].price,
                   style: TextStyle(
                     fontSize: Dimension.getResponsiveFontSize(context) * 0.8,
                     fontWeight: FontWeight.bold,
