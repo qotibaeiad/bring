@@ -41,6 +41,73 @@ class _CategoriesMainState extends State<CategoriesMain> {
         //print(data);
       });
     });
+
+    socketService.socket.on("deleteItem", (data) {
+      setState(() {
+        // Extract the id from the data received from the server
+        String itemId = data;
+
+        // Find the index of the item with the matching id
+        int index = items.indexWhere((item) => item.id == itemId);
+
+        // Check if the item with the given id exists in the list
+        if (index != -1) {
+          // Remove the item from the list
+          items.removeAt(index);
+          print('Item with id deleted: $itemId');
+        }
+      });
+    });
+
+    socketService.socket.on("updateItem", (data) {
+      setState(() {
+        int index = -1;
+        print(
+            "-----------------------------------------------------------------");
+        String itemId = data[1].toString();
+        for (var entry in data[1].entries) {
+          index = items.indexWhere((item) => item.id == entry.value);
+          print(index);
+        }
+        print(index);
+        if (index != -1) {
+          // Iterate through the updated fields and update the item
+          for (var entry in data[3].entries) {
+            final fieldName = entry.key;
+            final fieldValue = entry.value;
+
+            // Update the field in the item
+            items[index].updateField(fieldName, fieldValue);
+
+            print('Field: $fieldName, Value: $fieldValue');
+          }
+
+          print('Item updated: $itemId');
+        }
+        /*
+        // Find the index of the item with the matching id
+        int index = items.indexWhere((item) => item.id == itemId);
+        // Check if the item with the given id exists in the list
+        if (index != -1) {
+          // Iterate through the updated fields and update the item
+          for (var entry in data[3].entries) {
+            final fieldName = entry.key;
+            final fieldValue = entry.value;
+
+            // Update the field in the item
+            items[index].updateField(fieldName, fieldValue);
+
+            print('Field: $fieldName, Value: $fieldValue');
+          }
+
+          print('Item updated: $itemId');
+        }
+        */
+
+        print(
+            "-----------------------------------------------------------------");
+      });
+    });
   }
 
   @override

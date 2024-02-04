@@ -1,14 +1,15 @@
 class Item {
-  final String id;
-  final String url;
-  final String desc;
-  final String price;
-  final String category;
-  final String quant;
-  final String shop;
-  final String time;
-  final String location;
-  final String stars;
+  String id;
+  String url;
+  String desc;
+  String price;
+  String category;
+  String quant;
+  String shop;
+  String time;
+  String location;
+  String stars;
+  String top;
 
   Item({
     required this.id,
@@ -21,20 +22,59 @@ class Item {
     required this.time,
     required this.location,
     required this.stars,
+    required this.top,
   });
+
+  // Method to update a specific field
+  void updateField(String fieldName, dynamic value) {
+    switch (fieldName) {
+      case 'url':
+        this.url = value;
+        break;
+      case 'desc':
+        this.desc = value;
+        break;
+      case 'price':
+        this.price = value.toString(); // Convert to string
+        break;
+      case 'category':
+        this.category = value;
+        break;
+      case 'quant':
+        this.quant = value.toString(); // Convert to string
+        break;
+      case 'shop':
+        this.shop = value;
+        break;
+      case 'time':
+        this.time = value.toString(); // Convert to string
+        break;
+      case 'location':
+        this.location = value;
+        break;
+      case 'stars':
+        this.stars = value.toString(); // Convert to string
+        break;
+      case 'top':
+        this.top = value;
+        break;
+      // Add more cases for other fields as needed
+    }
+  }
 
   factory Item.fromJson(Map<String, dynamic> json) {
     return Item(
-      id: json['_id']?.toString() ?? '', // Convert to string
+      id: json['_id']?.toString() ?? '',
       url: json['url']?.toString() ?? '',
       desc: json['desc']?.toString() ?? '',
-      price: json['price']?.toString() ?? '', // Convert to string
+      price: json['price']?.toString() ?? '',
       category: json['category']?.toString() ?? '',
-      quant: json['quant']?.toString() ?? '', // Convert to string
+      quant: json['quant']?.toString() ?? '',
       shop: json['shop']?.toString() ?? '',
-      time: json['time']?.toString() ?? '', // Convert to string
+      time: json['time']?.toString() ?? '',
       location: json['location']?.toString() ?? '',
-      stars: json['stars']?.toString() ?? '', // Convert to string
+      stars: json['stars']?.toString() ?? '',
+      top: json['top']?.toString() ?? '',
     );
   }
 }
