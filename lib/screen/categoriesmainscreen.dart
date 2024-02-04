@@ -42,6 +42,19 @@ class _CategoriesMainState extends State<CategoriesMain> {
       });
     });
 
+    socketService.socket.on("insertItem", (data) {
+      setState(() {
+        print(
+            "-----------------------------------------------------------------");
+        Item item = Item.fromJson(data);
+        print(item.id);
+        items.add(item); // Add the Item object, not the raw JSON data
+        print(
+            "-----------------------------------------------------------------");
+        //print(data);
+      });
+    });
+
     socketService.socket.on("deleteItem", (data) {
       setState(() {
         // Extract the id from the data received from the server
