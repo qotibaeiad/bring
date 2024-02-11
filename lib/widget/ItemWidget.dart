@@ -1,6 +1,7 @@
 import 'package:bring/class/Dimension.dart';
 import 'package:bring/class/Item.dart';
 import 'package:bring/main.dart';
+import 'package:card_loading/card_loading.dart';
 import 'package:flutter/material.dart';
 
 class ItemWidget extends StatefulWidget {
@@ -126,23 +127,30 @@ class _ItemWidgetState extends State<ItemWidget> {
             ],
           ),
         ),
-        GridView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // Number of columns in the grid
-            crossAxisSpacing: 12,
-            mainAxisSpacing: 12,
-          ),
-          padding: EdgeInsets.symmetric(
-            vertical: Dimension.screenHeight(context) * 0.04,
-            horizontal: Dimension.screenWidth(context) * 0.04,
-          ),
-          itemCount: items.length,
-          itemBuilder: (BuildContext context, int index) {
-            return topfood(context, index);
-          },
-        )
+        items.length == 0
+            ? CardLoading(
+                animationDuration: Duration(milliseconds: 800),
+                height: Dimension.screenHeight(context) * 0.3,
+                width: Dimension.screenWidth(context) * 0.9,
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+              )
+            : GridView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, // Number of columns in the grid
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                ),
+                padding: EdgeInsets.symmetric(
+                  vertical: Dimension.screenHeight(context) * 0.04,
+                  horizontal: Dimension.screenWidth(context) * 0.04,
+                ),
+                itemCount: items.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return topfood(context, index);
+                },
+              )
       ],
     );
   }

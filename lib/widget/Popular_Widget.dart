@@ -2,6 +2,7 @@ import 'package:bring/class/Dimension.dart';
 import 'package:bring/class/Item.dart';
 import 'package:bring/main.dart';
 import 'package:bring/widget/custom_Container.dart';
+import 'package:card_loading/card_loading.dart';
 import 'package:flutter/material.dart';
 
 class PopularWidget extends StatefulWidget {
@@ -123,11 +124,29 @@ class _PopularWidgetState extends State<PopularWidget> {
           ),
         ),
         items.length == 0
-            ? Container(
-                height: Dimension.screenHeight(context) * 0.1,
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
+            ? Row(
+                children: [
+                  CardLoading(
+                    animationDuration: Duration(milliseconds: 800),
+                    height: Dimension.screenHeight(context) * 0.1,
+                    width: Dimension.screenWidth(context) * 0.3,
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                  SizedBox(width: Dimension.screenWidth(context) * 0.04),
+                  CardLoading(
+                    animationDuration: Duration(milliseconds: 800),
+                    height: Dimension.screenHeight(context) * 0.1,
+                    width: Dimension.screenWidth(context) * 0.3,
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                  SizedBox(width: Dimension.screenWidth(context) * 0.04),
+                  CardLoading(
+                    animationDuration: Duration(milliseconds: 800),
+                    height: Dimension.screenHeight(context) * 0.1,
+                    width: Dimension.screenWidth(context) * 0.3,
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                ],
               )
             : Container(
                 height: Dimension.screenHeight(context) * 0.1,

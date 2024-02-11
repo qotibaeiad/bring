@@ -1,6 +1,7 @@
 import 'package:bring/class/Dimension.dart';
 import 'package:bring/class/Item.dart';
 import 'package:bring/main.dart';
+import 'package:card_loading/card_loading.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 
@@ -112,11 +113,36 @@ class _CategoriesMainState extends State<CategoriesMain> {
   @override
   Widget build(BuildContext context) {
     return items.length == 0
-        ? Container(
-            height: Dimension.screenHeight(context) * 0.37,
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
+        ? Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              CardLoading(
+                animationDuration: Duration(milliseconds: 800),
+                height: Dimension.screenHeight(context) * 0.37,
+                width: Dimension.screenWidth(context) * 0.9,
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+              ),
+              Center(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    top: Dimension.screenHeight(context) * 0.2,
+                    right: Dimension.screenWidth(context) * 0.1,
+                    left: Dimension.screenWidth(context) * 0.1,
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(boxShadow: [
+                      BoxShadow(blurRadius: 10, color: Colors.grey)
+                    ]),
+                    child: CardLoading(
+                      animationDuration: Duration(milliseconds: 800),
+                      height: Dimension.screenHeight(context) * 0.15,
+                      width: Dimension.screenWidth(context) * 0.8,
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           )
         : Column(
             children: [
