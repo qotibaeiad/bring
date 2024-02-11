@@ -111,30 +111,36 @@ class _CategoriesMainState extends State<CategoriesMain> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: Dimension.screenHeight(context) * 0.37,
-          child: PageView.builder(
-            controller: pageController,
-            itemCount: items.length,
-            itemBuilder: (context, position) {
-              return _buildCategoryState(position);
-            },
-          ),
-        ),
-        new DotsIndicator(
-          dotsCount: items.length == 0 ? 1 : items.length,
-          position: currentPage.toInt(),
-          decorator: DotsDecorator(
-            size: const Size.square(9.0),
-            activeSize: const Size(18.0, 9.0),
-            activeShape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0)),
-          ),
-        ),
-      ],
-    );
+    return items.length == 0
+        ? Container(
+            height: Dimension.screenHeight(context) * 0.37,
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          )
+        : Column(
+            children: [
+              SizedBox(
+                height: Dimension.screenHeight(context) * 0.37,
+                child: PageView.builder(
+                    controller: pageController,
+                    itemCount: items.length,
+                    itemBuilder: (context, position) {
+                      return _buildCategoryState(position);
+                    }),
+              ),
+              new DotsIndicator(
+                dotsCount: items.length == 0 ? 1 : items.length,
+                position: currentPage.toInt(),
+                decorator: DotsDecorator(
+                  size: const Size.square(9.0),
+                  activeSize: const Size(18.0, 9.0),
+                  activeShape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)),
+                ),
+              ),
+            ],
+          );
   }
 
   Widget _buildCategoryState(int index) {

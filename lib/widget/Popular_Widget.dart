@@ -122,16 +122,23 @@ class _PopularWidgetState extends State<PopularWidget> {
             ],
           ),
         ),
-        Container(
-          height: Dimension.screenHeight(context) * 0.1,
-          child: ListView.builder(
-            itemCount: items.length,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (BuildContext context, int index) {
-              return MidItems(context, index);
-            },
-          ),
-        ),
+        items.length == 0
+            ? Container(
+                height: Dimension.screenHeight(context) * 0.1,
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              )
+            : Container(
+                height: Dimension.screenHeight(context) * 0.1,
+                child: ListView.builder(
+                  itemCount: items.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (BuildContext context, int index) {
+                    return MidItems(context, index);
+                  },
+                ),
+              ),
       ],
     );
   }
