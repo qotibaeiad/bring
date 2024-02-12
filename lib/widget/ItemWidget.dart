@@ -1,6 +1,7 @@
 import 'package:bring/class/Dimension.dart';
 import 'package:bring/class/Item.dart';
 import 'package:bring/main.dart';
+import 'package:bring/screen/Itemscreen.dart';
 import 'package:card_loading/card_loading.dart';
 import 'package:flutter/material.dart';
 
@@ -94,7 +95,6 @@ class _ItemWidgetState extends State<ItemWidget> {
       });
     });
   }
-  //PageController pageController = PageController(viewportFraction: 0.9);
 
   @override
   Widget build(BuildContext context) {
@@ -150,7 +150,7 @@ class _ItemWidgetState extends State<ItemWidget> {
                 itemBuilder: (BuildContext context, int index) {
                   return topfood(context, index);
                 },
-              )
+              ),
       ],
     );
   }
@@ -175,13 +175,23 @@ class _ItemWidgetState extends State<ItemWidget> {
         children: [
           InkWell(
             onTap: () {
-              Navigator.pushNamed(context, 'itempscreen');
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ItemPage(
+                    item: items[index],
+                  ),
+                ),
+              );
             },
             child: Container(
-              child: Image.network(
-                'https://photographer.paulewilliams.com/img-get2/I0000KOB2xgu0Re0/fit=1000x750/g=G0000DfCioCaOdiU/11598-Burger-In-Bun-Photos.jpg',
-                height: Dimension.screenHeight(context) * 0.15,
-                width: Dimension.screenWidth(context) * 0.30,
+              child: Hero(
+                tag: 'itemwidget-${items[index].id}',
+                child: Image.network(
+                  'https://photographer.paulewilliams.com/img-get2/I0000KOB2xgu0Re0/fit=1000x750/g=G0000DfCioCaOdiU/11598-Burger-In-Bun-Photos.jpg',
+                  height: Dimension.screenHeight(context) * 0.15,
+                  width: Dimension.screenWidth(context) * 0.30,
+                ),
               ),
             ),
           ),

@@ -24,7 +24,6 @@ class MyApp extends StatelessWidget {
         'splashscreen': (context) => SplashScreen(),
         'Verification': (context) => Login(),
         'welcomescreen': (context) => welcomescreen(),
-        'itempscreen': (context) => ItemPage(),
         'orderhistory': (context) => OrderHistory(),
         // 'mainpage': (context) => mainpage(),
       },
