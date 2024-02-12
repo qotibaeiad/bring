@@ -27,8 +27,8 @@ class _CategoriesMainState extends State<CategoriesMain> {
         currentPage = pageController.page!;
       });
     });
-    // Emit the "streamitem" event to request initial data
     socketService.socket.emit("streamitem");
+
     // Listen for "streamitems" event and update the UI
     socketService.socket.on("streamitems", (data) {
       setState(() {
@@ -116,11 +116,16 @@ class _CategoriesMainState extends State<CategoriesMain> {
         ? Stack(
             alignment: Alignment.topCenter,
             children: [
-              CardLoading(
-                animationDuration: Duration(milliseconds: 800),
-                height: Dimension.screenHeight(context) * 0.37,
-                width: Dimension.screenWidth(context) * 0.9,
-                borderRadius: BorderRadius.all(Radius.circular(15)),
+              Container(
+                decoration: BoxDecoration(
+                  boxShadow: [BoxShadow(blurRadius: 10, color: Colors.grey)],
+                ),
+                child: CardLoading(
+                  animationDuration: Duration(milliseconds: 800),
+                  height: Dimension.screenHeight(context) * 0.37,
+                  width: Dimension.screenWidth(context) * 0.9,
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                ),
               ),
               Center(
                 child: Padding(
@@ -129,16 +134,67 @@ class _CategoriesMainState extends State<CategoriesMain> {
                     right: Dimension.screenWidth(context) * 0.1,
                     left: Dimension.screenWidth(context) * 0.1,
                   ),
-                  child: Container(
-                    decoration: BoxDecoration(boxShadow: [
-                      BoxShadow(blurRadius: 10, color: Colors.grey)
-                    ]),
-                    child: CardLoading(
-                      animationDuration: Duration(milliseconds: 800),
-                      height: Dimension.screenHeight(context) * 0.15,
-                      width: Dimension.screenWidth(context) * 0.8,
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
+                  child: Stack(
+                    alignment: Alignment.bottomLeft,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(boxShadow: [
+                          BoxShadow(blurRadius: 10, color: Colors.grey)
+                        ]),
+                        child: CardLoading(
+                          animationDuration: Duration(milliseconds: 800),
+                          height: Dimension.screenHeight(context) * 0.15,
+                          width: Dimension.screenWidth(context) * 0.8,
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(Dimension.defaultPadding),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(boxShadow: [
+                                BoxShadow(blurRadius: 10, color: Colors.grey)
+                              ]),
+                              child: CardLoading(
+                                animationDuration: Duration(milliseconds: 800),
+                                height: Dimension.screenHeight(context) * 0.01,
+                                width: Dimension.screenWidth(context) * 0.2,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15)),
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(boxShadow: [
+                                BoxShadow(blurRadius: 10, color: Colors.grey)
+                              ]),
+                              child: CardLoading(
+                                animationDuration: Duration(milliseconds: 800),
+                                height: Dimension.screenHeight(context) * 0.01,
+                                width: Dimension.screenWidth(context) * 0.2,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15)),
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(blurRadius: 10, color: Colors.grey)
+                                ],
+                              ),
+                              child: CardLoading(
+                                animationDuration: Duration(milliseconds: 800),
+                                height: Dimension.screenHeight(context) * 0.01,
+                                width: Dimension.screenWidth(context) * 0.2,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15)),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -171,7 +227,6 @@ class _CategoriesMainState extends State<CategoriesMain> {
 
   Widget _buildCategoryState(int index) {
     final currentItem = items[index];
-    final imageUrl = currentItem.url;
     final category = currentItem.category;
     final stars = currentItem.stars;
     final desc = currentItem.desc;
