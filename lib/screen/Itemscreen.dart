@@ -79,22 +79,13 @@ class _ItemPageState extends State<ItemPage> {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: Dimension.defaultPadding * 6),
-            child: Container(
-              decoration: BoxDecoration(boxShadow: [
-                BoxShadow(
-                    spreadRadius: 6,
-                    offset: Offset(0, 1),
-                    blurRadius: 4,
-                    color: Colors.grey.withOpacity(0.2))
-              ]),
-              child: ClipRRect(
-                child: Hero(
-                  tag: 'itemwidget-${this.widget.item.id}',
-                  child: Image.network(
-                    this.widget.item.url,
-                    height: 360,
-                    fit: BoxFit.cover,
-                  ),
+            child: ClipRRect(
+              child: Hero(
+                tag: 'itemwidget-${this.widget.item.id}',
+                child: Image.network(
+                  this.widget.item.url,
+                  height: 360,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),

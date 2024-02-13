@@ -188,7 +188,7 @@ class _ItemWidgetState extends State<ItemWidget> {
               child: Hero(
                 tag: 'itemwidget-${items[index].id}',
                 child: Image.network(
-                  'https://photographer.paulewilliams.com/img-get2/I0000KOB2xgu0Re0/fit=1000x750/g=G0000DfCioCaOdiU/11598-Burger-In-Bun-Photos.jpg',
+                  items[index].url,
                   height: Dimension.screenHeight(context) * 0.15,
                   width: Dimension.screenWidth(context) * 0.30,
                 ),

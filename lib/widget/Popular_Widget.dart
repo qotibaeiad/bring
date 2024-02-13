@@ -178,13 +178,9 @@ class _PopularWidgetState extends State<PopularWidget> {
       child: Row(
         children: [
           Padding(
-            padding: EdgeInsets.all(0),
-            child: customContainer(
-              path: items[index].url,
-              radius: 20,
-              elevation: 10,
-              width: Dimension.screenWidth(context) * 0.11,
-              height: 50,
+            padding: EdgeInsets.all(Dimension.defaultPadding * 0.1),
+            child: Image(
+              image: NetworkImage(items[index].url),
             ),
           ),
           Padding(
