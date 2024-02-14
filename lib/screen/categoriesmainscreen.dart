@@ -229,7 +229,6 @@ class _CategoriesMainState extends State<CategoriesMain> {
     final currentItem = items[index];
     final category = currentItem.category;
     final stars = currentItem.stars;
-    final desc = currentItem.desc;
     final time = currentItem.time;
     final location = currentItem.location;
     Matrix4 matrix = new Matrix4.identity();
@@ -301,7 +300,7 @@ class _CategoriesMainState extends State<CategoriesMain> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        desc,
+                        category,
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.bold),
                       ),

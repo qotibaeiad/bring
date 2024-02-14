@@ -22,7 +22,7 @@ class _TotalPriceState extends State<TotalPrice> {
             height: 50,
             width: 400,
             decoration: BoxDecoration(
-              color: Colors.blue[500],
+              color: Colors.blue[900],
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(

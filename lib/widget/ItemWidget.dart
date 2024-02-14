@@ -180,6 +180,7 @@ class _ItemWidgetState extends State<ItemWidget> {
                 MaterialPageRoute(
                   builder: (context) => ItemPage(
                     item: items[index],
+                    items: items,
                   ),
                 ),
               );
@@ -198,7 +199,7 @@ class _ItemWidgetState extends State<ItemWidget> {
           Container(
             alignment: Alignment.centerLeft,
             child: Text(
-              items[index].desc,
+              items[index].category,
               style: TextStyle(
                 fontSize: Dimension.defaultFontSize * 0.035,
                 fontWeight: FontWeight.bold,
@@ -209,7 +210,7 @@ class _ItemWidgetState extends State<ItemWidget> {
           Container(
             alignment: Alignment.centerLeft,
             child: Text(
-              items[index].desc,
+              items[index].category,
               style: TextStyle(
                 fontSize: Dimension.getResponsiveFontSize(context) * 0.8,
                 fontWeight: FontWeight.bold,

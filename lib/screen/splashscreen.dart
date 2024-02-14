@@ -70,7 +70,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             toolbarHeight: MediaQuery.of(context).size.height * 0.07,
             leadingWidth: MediaQuery.of(context).size.width * 0.29,
-            backgroundColor: Colors.blue[500],
+            backgroundColor: Colors.blue[900],
           ),
           drawer: Drawer(
             // Your drawer content goes here
