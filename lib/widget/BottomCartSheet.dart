@@ -1,5 +1,3 @@
-import 'package:bring/class/Dimension.dart';
-import 'package:bring/widget/TotalPrice.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
