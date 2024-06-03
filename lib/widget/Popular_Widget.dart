@@ -1,9 +1,9 @@
 import 'package:bring/class/Dimension.dart';
 import 'package:bring/class/Item.dart';
 import 'package:bring/main.dart';
-import 'package:bring/widget/custom_Container.dart';
 import 'package:card_loading/card_loading.dart';
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class PopularWidget extends StatefulWidget {
   const PopularWidget({super.key});
@@ -167,20 +167,23 @@ class _PopularWidgetState extends State<PopularWidget> {
       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       height: Dimension.screenHeight(context) * 0.11,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-                color: Colors.grey.withOpacity(0.7),
-                spreadRadius: 1,
-                blurRadius: 6),
-          ]),
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.7),
+            spreadRadius: 1,
+            blurRadius: 6,
+          ),
+        ],
+      ),
       child: Row(
         children: [
           Padding(
             padding: EdgeInsets.all(Dimension.defaultPadding * 0.1),
-            child: Image(
-              image: NetworkImage(items[index].url),
+            child: FadeInImage.memoryNetwork(
+              placeholder: kTransparentImage,
+              image: items[index].url,
             ),
           ),
           Padding(
