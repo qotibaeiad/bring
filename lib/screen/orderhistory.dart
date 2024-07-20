@@ -48,8 +48,11 @@ class _OrderHistoryState extends State<OrderHistory> {
             alignment: Alignment.topCenter,
             child: Padding(
               padding: const EdgeInsets.only(
-                  top: 100, left: 20, right: 20, bottom: 90),
+                  top: 100, left: 20, right: 20, bottom: 180),
               child: SingleChildScrollView(
+                padding: EdgeInsets.symmetric(
+                    vertical: Dimension.screenHeight(context) * 0.01,
+                    horizontal: Dimension.screenWidth(context) * 0.03),
                 child: Column(
                   children: [
                     for (int i = 0; i < 10; i++)

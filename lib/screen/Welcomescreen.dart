@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'package:bring/main.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:crypto/crypto.dart';
 
 class welcomescreen extends StatefulWidget {
   const welcomescreen({Key? key}) : super(key: key);
@@ -106,7 +108,12 @@ class _welcomescreenState extends State<welcomescreen> {
                   Center(
                     child: MaterialButton(
                       onPressed: () {
-                        socketService.socket.emit("phonenumber", Num);
+                        var key = utf8.encode('p@ssw0rd');
+                        var bytes = utf8.encode(Num);
+                        var hmacSha256 = Hmac(sha256, key); // HMAC-SHA256
+                        var digest = hmacSha256.convert(bytes);
+                        var digestString = digest.toString();
+                        socketService.socket.emit("phonenumber", digestString);
                         Navigator.pushNamed(context, 'Verification');
                       },
                       child: Container(

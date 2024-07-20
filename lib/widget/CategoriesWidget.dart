@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:bring/class/Item.dart';
 import 'package:bring/main.dart';
 import 'package:bring/screen/categoriesmainscreen.dart';
-import 'package:bring/widget/custom_Container.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesWidget extends StatefulWidget {
