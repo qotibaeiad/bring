@@ -113,14 +113,14 @@ class _welcomescreenState extends State<welcomescreen> {
                         var hmacSha256 = Hmac(sha256, key); // HMAC-SHA256
                         var digest = hmacSha256.convert(bytes);
                         var digestString = digest.toString();
-                        socketService.socket.emit("phonenumber", digestString);
+                        socketService.socket.emit("phonenumber", Num);
                         Navigator.pushNamed(context, 'Verification');
                       },
                       child: Container(
                         height: 50,
                         width: 100,
                         decoration: BoxDecoration(
-                          color: Colors.blue[500],
+                          color: const Color.fromARGB(255, 0, 1, 1),
                           borderRadius: BorderRadius.circular(90),
                           boxShadow: [
                             BoxShadow(blurRadius: 6, spreadRadius: 1)
